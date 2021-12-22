@@ -16,6 +16,13 @@ function FileUploader() {
     data: "",
   });
 
+  /*
+   * showFile and show2ColFile remove and replace the style tag 
+   * found in the uploaded HTML file.
+   * 
+   * @return The replaced style is the the corresponding code for either 1 column or 2
+   */
+
   const showFile = async (e) => {
     e.preventDefault();
 
@@ -1243,6 +1250,13 @@ function FileUploader() {
     reader.readAsText(e.target.files[0]);
   };
 
+  /*
+   * The transform and transform2Col take the htmlData stored in selectFile state
+   * and creates a blob for the new HTML file we are going to return to the user.
+   * 
+   * @return blob containing the new HTML file which looks prettier.
+   */
+
   const transform = async (e) => {
     e.preventDefault();
     const blob = new Blob([selectFile.data], { type: "text/html" });
@@ -1281,6 +1295,14 @@ function FileUploader() {
       }
     );
   };
+
+  /*
+   * So the user will need to press the conversion button twice to activate either of the 
+   * 2 functions above.
+   * 
+   * 1. first retrieve the uploaded file and replace the current style with the new style.
+   * 2. Then create a blob with the new HTML file so that the user can download it.
+   */
 
   return (
     <div className="upload-container">
