@@ -1,0 +1,3396 @@
+<html>
+  <head>
+    <meta name="viewport" content="width=670" />
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700;900&display=swap");
+      @import url("https://fonts.googleapis.com/css2?family=Open+Sans&family=Roboto:wght@400;500;700;900&display=swap");
+
+      @media only print {
+        div.battlescribe {
+          columns: 200px 2;
+        }
+
+        li.rootselection > h4 {
+          font-size: 12px;
+        }
+
+        div.battlescribe {
+          font-size: 10px;
+        }
+
+        div.battlescribe p {
+          font-size: 10px;
+        }
+
+        div.battlescribe table {
+          font-size: 10px;
+        }
+
+        div.battlescribe h4 {
+          font-size: 13px;
+        }
+
+        div.battlescribe li.force {
+          margin: 0px 10px 6px 0px;
+        }
+
+        div.battlescribe h1 {
+          font-size: 24px;
+        }
+
+        div.battlescribe h2 {
+          font-size: 20px;
+        }
+
+        div.battlescribe div.summary {
+          page-break-before: avoid;
+          page-break-inside: avoid;
+          margin-right: 10px;
+          float: left;
+        }
+
+        th {
+          padding: 4px;
+        }
+
+        td {
+          padding: 4px;
+        }
+      }
+
+      @media only screen {
+        div.battlescribe div.summary {
+          width: 100%;
+          max-width: 650px;
+          margin-left: auto;
+          margin-right: auto;
+        }
+
+        div.battlescribe li.force {
+          margin-right: auto;
+          margin-left: auto;
+          width: 100%;
+          max-width: 650px;
+        }
+
+        div.battlescribe {
+          columns: 200px 2;
+
+          font-size: 12px;
+        }
+
+        div.battlescribe h1 {
+          font-size: 28px;
+        }
+
+        div.battlescribe p {
+          font-size: 12px;
+        }
+
+        div.battlescribe table {
+          font-size: 12px;
+        }
+
+        div.battlescribe h4 {
+          font-size: 16px;
+        }
+
+        div.battlescribe li.rootselection {
+          margin-bottom: 0px;
+        }
+
+        div.battlescribe h2 {
+          font-size: 25px;
+        }
+
+        div.battlescribe h1 {
+          width: 100%;
+          max-width: 650px;
+          margin-left: auto;
+          margin-right: auto;
+        }
+
+        th {
+          padding: 4px;
+        }
+
+        td {
+          padding: 4px;
+        }
+
+        th:first-of-type {
+          padding-left: 16px;
+        }
+
+        th:last-of-type {
+          padding-right: 16px;
+        }
+
+        td:first-of-type {
+          padding-left: 16px;
+        }
+
+        td:last-of-type {
+          padding-right: 16px;
+        }
+      }
+
+      li.force > p.rule-names {
+        margin-bottom: 10px;
+        margin-left: 16px;
+        margin-top: -12px;
+        font-variant: small-caps;
+        font-size: 16px;
+      }
+
+      body.battlescribe {
+        margin: 0px;
+        padding: 0px;
+        border-width: 0px;
+      }
+
+      div.battlescribe {
+        margin-top: 0px;
+        margin-bottom: 0px;
+        margin-left: auto;
+        margin-right: auto;
+        padding: 8px;
+        border-width: 0px;
+        font-family: "Roboto", serif;
+        color: #444444;
+        text-align: left;
+      }
+
+      div.battlescribe h2,
+      div.battlescribe h3,
+      div.battlescribe h4 {
+        margin: 0px;
+        padding: 0px;
+        border-width: 0px;
+        line-height: 1em;
+      }
+
+      div.battlescribe h1 {
+        margin-top: 8px;
+        font-family: "Roboto", sans-serif;
+        color: #222e33;
+        text-align: left;
+        text-transform: uppercase;
+        line-height: 1.1em;
+      }
+
+      div.battlescribe h2 {
+        font-family: "Roboto", sans-serif;
+        color: #222e33;
+        text-transform: uppercase;
+        margin-left: auto;
+        margin-right: auto;
+        margin-bottom: 20px;
+        padding-top: 10px;
+        margin-top: 30px;
+        border-top: 3px #e1ecf0 solid;
+        line-height: 1.1em;
+      }
+
+      div.battlescribe h3 {
+        font-size: 20px;
+        font-family: "Roboto", sans-serif;
+        color: #222e33;
+        text-transform: uppercase;
+        text-align: left;
+        margin-bottom: 5px;
+      }
+
+      li.rootselection > h4 {
+        font-family: "Roboto", sans-serif;
+        font-size: 16px;
+        padding-bottom: 5px;
+        padding-left: 5px;
+        color: #222e33;
+        text-transform: uppercase;
+      }
+
+      div.battlescribe h1 + p,
+      .battlescribe > p:first-of-type {
+        width: 50%;
+        max-width: 400px;
+        min-width: 200px;
+        margin-right: auto;
+        margin-left: auto;
+        margin-bottom: 20px;
+        font-style: italic;
+        border-width: 1px;
+        border-style: solid;
+        padding: 10px;
+        border-color: #e3510e;
+      }
+
+      div.battlescribe h1 + p::before,
+      .battlescribe > p:first-of-type::before {
+        content: "Roster notes: ";
+        font-weight: bold;
+        font-style: normal;
+      }
+
+      div.summary h2 {
+        margin-top: 20px;
+        margin-bottom: 10px;
+        padding: 0px;
+        border-width: 0px;
+        font-family: "Open Sans", sans-serif;
+        font-size: 20px;
+        text-align: left;
+        padding-top: 10px;
+        border-top: 3px #e1ecf0 solid;
+      }
+
+      li.rootselection > ul > li > h4 {
+        font-variant: small-caps;
+        padding-left: 5px;
+      }
+
+      div.battlescribe div.summary {
+        page-break-before: avoid;
+        page-break-inside: avoid;
+      }
+
+      div.battlescribe div.summary p {
+        padding: 10px;
+        border: 1px #222e33 solid;
+        margin-left: 0px;
+      }
+
+      div.battlescribe ul {
+        margin: 0px 0px -5px 0px;
+        padding: 0px;
+        border-width: 0px;
+        list-style-image: none;
+        list-style-position: outside;
+        list-style-type: none;
+      }
+
+      div.battlescribe li {
+        margin: 8px 0px 0px 0px;
+        padding: 0px;
+        border-width: 0px;
+      }
+
+      div.battlescribe li.force {
+        margin-bottom: 16px;
+        padding: 0px;
+        border-width: 0px;
+      }
+
+      div.battlescribe li.category {
+        margin: 0px 0px 16px 0px;
+        padding: 0px;
+        border-width: 0px;
+        break-before: page;
+      }
+
+      div.battlescribe li.rootselection {
+        padding-top: 5px;
+        border-width: 1px;
+        border-style: solid;
+        border-color: #222e33;
+        page-break-inside: avoid;
+        line-height: 1.1em;
+      }
+
+      div.battlescribe p {
+        margin: 4px 0px 0px 16px;
+        padding: 0px;
+        border-width: 0px;
+      }
+
+      div.battlescribe p.category-names {
+        margin-bottom: 5px;
+        margin-right: 2px;
+      }
+
+      div.battlescribe p.rule-names {
+      }
+
+      div.battlescribe p.profile-names {
+        display: none;
+      }
+
+      div.battlescribe span.bold {
+      }
+
+      div.battlescribe table:first-of-type {
+        margin-top: -10px;
+      }
+
+      li.category > ul > li.rootselection > ul,
+      li.rootselection > p.rule-names {
+        margin-bottom: 4px;
+      }
+
+      div.battlescribe table {
+        margin-bottom: 0px;
+        margin-right: auto;
+        margin-left: auto;
+        padding: 0px;
+        border-collapse: collapse;
+        width: 100%;
+        color: #444444;
+        page-break-inside: avoid;
+      }
+
+      div.battlescribe tr {
+        border-width: 0px;
+        border-style: solid;
+        border-color: #222e33;
+      }
+
+      tr:nth-child(even) {
+        background-color: #e1ecf0;
+      }
+
+      tr:nth-child(odd) {
+        background: #fff;
+      }
+
+      div.battlescribe th {
+        margin: 0px;
+        border-width: 0px;
+        color: white;
+        font-weight: bold;
+        text-align: left;
+        background-color: #222e33;
+      }
+
+      div.battlescribe td {
+        margin: 0px;
+        border-width: 0px;
+        text-align: left;
+        line-height: 1.1em;
+        vertical-align: top;
+      }
+
+      div.battlescribe td.profile-name {
+        font-weight: bold;
+      }
+
+      div.battlescribe td.statistic-name {
+        font-weight: bold;
+      }
+
+      div.battlescribe table.statistics {
+      }
+
+      div.battlescribe table.statistics tr.subtotal {
+        font-weight: bold;
+      }
+
+      div.battlescribe table.statistics tr.total {
+        font-size: 13px;
+        font-weight: bold;
+      }
+
+      div.battlescribe table.statistics th {
+        border-width: 1px;
+        border-style: solid;
+        border-color: #bbbbbb;
+        font-size: 13px;
+        text-align: right;
+      }
+
+      div.battlescribe table.statistics th.center {
+        text-align: center;
+      }
+
+      div.battlescribe table.statistics td {
+        border-width: 4px;
+        border-style: solid;
+        border-color: #bbbbbb;
+        text-align: right;
+      }
+
+      div.battlescribe span.bold {
+        font-weight: bold;
+      }
+
+      div.battlescribe span.italic {
+        font-style: italic;
+      }
+
+      div.battlescribe span.caps {
+        font-variant: small-caps;
+        font-weight: bold;
+      }
+
+      br + p {
+        display: none;
+      }
+
+      @media only print {
+        div.battlescribe {
+          columns: 200px 2;
+        }
+
+        li.rootselection > h4 {
+          font-size: 12px;
+        }
+
+        div.battlescribe {
+          font-size: 10px;
+        }
+
+        div.battlescribe p {
+          font-size: 10px;
+        }
+
+        div.battlescribe table {
+          font-size: 10px;
+        }
+
+        div.battlescribe h4 {
+          font-size: 13px;
+        }
+
+        div.battlescribe li.force {
+          margin: 0px 10px 6px 0px;
+        }
+
+        div.battlescribe h1 {
+          font-size: 24px;
+        }
+
+        div.battlescribe h2 {
+          font-size: 20px;
+        }
+
+        div.battlescribe div.summary {
+          page-break-before: avoid;
+          page-break-inside: avoid;
+          margin-right: 10px;
+          float: left;
+        }
+
+        th {
+          padding: 4px;
+        }
+
+        td {
+          padding: 4px;
+        }
+      }
+    </style>
+  </head>
+  <body class="battlescribe">
+    <div class="battlescribe">
+      <h1>
+        Blood Angels (Warhammer 40,000 9th Edition) [106 PL, 12CP, 1,945pts]
+      </h1>
+      <ul>
+        <li class="force">
+          <h2>
+            Brigade Detachment 0CP (Imperium - Adeptus Astartes - Blood Angels)
+            [106 PL, 12CP, 1,945pts]
+          </h2>
+          <p class="rule-names">
+            <span class="bold">Rules:</span>
+            <span class="italic"
+              >And They Shall Know No Fear, Angels of Death, Bolter Discipline,
+              Combat Doctrines, Shock Assault</span
+            >
+          </p>
+          <ul>
+            <li class="category">
+              <h3>Configuration [12CP]</h3>
+              <ul>
+                <li class="rootselection">
+                  <h4>**Chapter Selector**</h4>
+                  <p><span class="bold">Selections:</span> Blood Angels</p>
+                  <p class="category-names">
+                    <span class="bold">Categories:</span>
+                    <span class="caps">PC: BA, Configuration</span>
+                  </p>
+                  <p class="rule-names">
+                    <span class="bold">Rules:</span>
+                    <span class="italic">The Red Thirst</span>
+                  </p>
+                </li>
+                <li class="rootselection">
+                  <h4>Battle Size [12CP]</h4>
+                  <p>
+                    <span class="bold">Selections:</span> 3. Strike Force
+                    (101-200 Total PL / 1001-2000 Points) [12CP]
+                  </p>
+                  <p class="category-names">
+                    <span class="bold">Categories:</span>
+                    <span class="caps">Configuration</span>
+                  </p>
+                </li>
+                <li class="rootselection">
+                  <h4>Detachment Command Cost</h4>
+                  <p class="category-names">
+                    <span class="bold">Categories:</span>
+                    <span class="caps">Configuration</span>
+                  </p>
+                </li>
+              </ul>
+            </li>
+            <li class="category">
+              <h3>HQ [19 PL, 355pts]</h3>
+              <ul>
+                <li class="rootselection">
+                  <h4>Astorath [8 PL, 150pts]</h4>
+                  <p>
+                    <span class="bold">Selections:</span> Bolt pistol, Frag
+                    &amp; Krak grenades, Litany of Hate, Mass of Doom, The
+                    Executioner's Axe
+                  </p>
+                  <p class="category-names">
+                    <span class="bold">Categories:</span>
+                    <span class="caps"
+                      >Character, Faction: Blood Angels, Faction: Imperium, HQ,
+                      Infantry, Fly, Jump Pack, Chaplain, Astorath, Master of
+                      Sanctity, Faction: Adeptus Astartes</span
+                    >
+                  </p>
+                  <p class="rule-names">
+                    <span class="bold">Rules:</span>
+                    <span class="italic"
+                      >Angels of Death, Death from Above, Savage Echoes, The Red
+                      Thirst</span
+                    >
+                  </p>
+                  <p class="profile-names">
+                    <span class="bold">Abilities:</span>
+                    <span class="italic"
+                      >Litany of Hate, Mass of Doom, Priest, Redeemer of the
+                      Lost (Aura), Rosarius, Spiritual Leaders (Aura)</span
+                    >, <span class="bold">Unit:</span>
+                    <span class="italic">Astorath</span>,
+                    <span class="bold">Weapon:</span>
+                    <span class="italic"
+                      >Bolt pistol, Frag grenades, Krak grenades, The
+                      Executioner's Axe</span
+                    >
+                  </p>
+                  <br />
+                  <table cellspacing="-1">
+                    <tr>
+                      <th>Abilities</th>
+                      <th>Description</th>
+                      <th>Ref</th>
+                    </tr>
+                    <tr>
+                      <td class="profile-name">Litany of Hate</td>
+                      <td>
+                        If this litany is inspiring, the while a friendly BLOOD
+                        ANGELS CORE or BLOOD ANGELS CHARACTER unit is within 6"
+                        of this PRIEST, each time an model in that unit makes a
+                        melee attack, you can re-roll the hit roll.
+                      </td>
+                      <td></td>
+                    </tr>
+                    <tr>
+                      <td class="profile-name">Mass of Doom</td>
+                      <td>
+                        If this litany is inspiring, select one friendly BLOOD
+                        ANGELS CORE or BLOOD ANGELS CHARACTER unit (excluding
+                        VEHICLE units) within 6" of this PRIEST model. Roll one
+                        D6 and apply the result below: <br />
+                        1 Merciful Execution: One model in that unit is
+                        destroyed. Each time a model in that unit makes a melee
+                        attack, add 1 to that attack&#8217;s hit roll.<br />
+                        2-5 Dark Wrath: Each time a model in that unit makes a
+                        melee attack, add 1 to that hit roll.<br />
+                        6 Vessel of Sanguinius: Models in that unit have a 4+
+                        invulnerable save. Each time a model in that unit makes
+                        a melee attack, add 1 to that attack&#8217;s hit roll.
+                      </td>
+                      <td></td>
+                    </tr>
+                    <tr>
+                      <td class="profile-name">Priest</td>
+                      <td>
+                        This model knows the Litany of Hate, Mass of Doom (see
+                        below) and two other litanies from the Litanies of
+                        Battle (see Codex: Space Marines). In your Command
+                        phase, if this model is on the battlefield, it can
+                        recite up to two litanies it knows that have not already
+                        been recited by a friendly model that battle round.
+                      </td>
+                      <td></td>
+                    </tr>
+                    <tr>
+                      <td class="profile-name">Redeemer of the Lost (Aura)</td>
+                      <td>
+                        While a friendly BLOOD ANGELS DEATH COMPANY unit is
+                        within 6" of this model, each time a Morale test is
+                        taken for that unit, that test is automatically passed.
+                      </td>
+                      <td></td>
+                    </tr>
+                    <tr>
+                      <td class="profile-name">Rosarius</td>
+                      <td>This model has a 4+ invulnerable save.</td>
+                      <td></td>
+                    </tr>
+                    <tr>
+                      <td class="profile-name">Spiritual Leaders (Aura)</td>
+                      <td>
+                        While a friendly BLOOD ANGELS CORE unit is within 6" of
+                        this model, models in that unit can use this
+                        model&#8217;s Leadership characteristic instead of their
+                        own.
+                      </td>
+                      <td></td>
+                    </tr>
+                  </table>
+                  <table cellspacing="-1">
+                    <tr>
+                      <th>Unit</th>
+                      <th>M</th>
+                      <th>WS</th>
+                      <th>BS</th>
+                      <th>S</th>
+                      <th>T</th>
+                      <th>W</th>
+                      <th>A</th>
+                      <th>Ld</th>
+                      <th>Save</th>
+                      <th>Ref</th>
+                    </tr>
+                    <tr>
+                      <td class="profile-name">Astorath</td>
+                      <td>12"</td>
+                      <td>2+</td>
+                      <td>2+</td>
+                      <td>4</td>
+                      <td>4</td>
+                      <td>5</td>
+                      <td>4</td>
+                      <td>9</td>
+                      <td>2+</td>
+                      <td></td>
+                    </tr>
+                  </table>
+                  <table cellspacing="-1">
+                    <tr>
+                      <th>Weapon</th>
+                      <th>Range</th>
+                      <th>Type</th>
+                      <th>S</th>
+                      <th>AP</th>
+                      <th>D</th>
+                      <th>Abilities</th>
+                      <th>Ref</th>
+                    </tr>
+                    <tr>
+                      <td class="profile-name">Bolt pistol</td>
+                      <td>12"</td>
+                      <td>Pistol 1</td>
+                      <td>4</td>
+                      <td>0</td>
+                      <td>1</td>
+                      <td>-</td>
+                      <td></td>
+                    </tr>
+                    <tr>
+                      <td class="profile-name">Frag grenades</td>
+                      <td>6"</td>
+                      <td>Grenade D6</td>
+                      <td>3</td>
+                      <td>0</td>
+                      <td>1</td>
+                      <td>Blast.</td>
+                      <td></td>
+                    </tr>
+                    <tr>
+                      <td class="profile-name">Krak grenades</td>
+                      <td>6"</td>
+                      <td>Grenade 1</td>
+                      <td>6</td>
+                      <td>-1</td>
+                      <td>D3</td>
+                      <td>-</td>
+                      <td></td>
+                    </tr>
+                    <tr>
+                      <td class="profile-name">The Executioner's Axe</td>
+                      <td>Melee</td>
+                      <td>Melee</td>
+                      <td>+2</td>
+                      <td>-3</td>
+                      <td>3</td>
+                      <td>-</td>
+                      <td></td>
+                    </tr>
+                  </table>
+                </li>
+                <li class="rootselection">
+                  <h4>Brother Corbulo [6 PL, 115pts]</h4>
+                  <p>
+                    <span class="bold">Selections:</span> Bolt pistol, Frag
+                    &amp; Krak grenades, Heaven's Teeth
+                  </p>
+                  <p class="category-names">
+                    <span class="bold">Categories:</span>
+                    <span class="caps"
+                      >Character, Faction: Blood Angels, Faction: Imperium, HQ,
+                      Infantry, Brother Corbulo, Chief Apothecary, Faction:
+                      Adeptus Astartes</span
+                    >
+                  </p>
+                  <p class="rule-names">
+                    <span class="bold">Rules:</span>
+                    <span class="italic"
+                      >Angels of Death, Savage Echoes, The Red Thirst</span
+                    >
+                  </p>
+                  <p class="profile-names">
+                    <span class="bold">Abilities:</span>
+                    <span class="italic"
+                      >Combat Restoratives, Narthecium (Aura), Sanguinary High
+                      Priest, The Red Grail (Aura)</span
+                    >, <span class="bold">Unit:</span>
+                    <span class="italic">Brother Corbulo</span>,
+                    <span class="bold">Weapon:</span>
+                    <span class="italic"
+                      >Bolt pistol, Frag grenades, Heaven's Teeth, Krak
+                      grenades</span
+                    >
+                  </p>
+                  <br />
+                  <table cellspacing="-1">
+                    <tr>
+                      <th>Abilities</th>
+                      <th>Description</th>
+                      <th>Ref</th>
+                    </tr>
+                    <tr>
+                      <td class="profile-name">Combat Restoratives</td>
+                      <td>
+                        At the end of your Movement phase, this model can heal
+                        one friendly Blood Angels Infantry or Blood Angels Biker
+                        model whose unit is within 3" of it. That model regains
+                        up to D3 lost wounds. Each model can only be healed once
+                        per turn.
+                      </td>
+                      <td></td>
+                    </tr>
+                    <tr>
+                      <td class="profile-name">Narthecium (Aura)</td>
+                      <td>
+                        While a friendly BLOOD ANGELS INFANTRY or BLOOD ANGELS
+                        BIKER unit is within 3" of this model, each time a model
+                        in that unit would lose a wound, roll one D6: on a 6,
+                        that wound is not lost.
+                      </td>
+                      <td></td>
+                    </tr>
+                    <tr>
+                      <td class="profile-name">Sanguinary High Priest</td>
+                      <td>
+                        At the end of your Movement phase, this model can use
+                        its Combat Restoratives ability twice instead of once.
+                      </td>
+                      <td></td>
+                    </tr>
+                    <tr>
+                      <td class="profile-name">The Red Grail (Aura)</td>
+                      <td>
+                        While a friendly BLOOD ANGELS CORE or BLOOD ANGELS
+                        CHARACTER unit (excluding VEHICLE units) is within 6" of
+                        this model, if the Tactical Doctrine or Devastator
+                        Doctrine is active for your army, then each time a model
+                        in that unit makes an attack, the Assault Doctrine is
+                        considered to be active for that attack instead.
+                      </td>
+                      <td></td>
+                    </tr>
+                  </table>
+                  <table cellspacing="-1">
+                    <tr>
+                      <th>Unit</th>
+                      <th>M</th>
+                      <th>WS</th>
+                      <th>BS</th>
+                      <th>S</th>
+                      <th>T</th>
+                      <th>W</th>
+                      <th>A</th>
+                      <th>Ld</th>
+                      <th>Save</th>
+                      <th>Ref</th>
+                    </tr>
+                    <tr>
+                      <td class="profile-name">Brother Corbulo</td>
+                      <td>6"</td>
+                      <td>2+</td>
+                      <td>2+</td>
+                      <td>4</td>
+                      <td>4</td>
+                      <td>5</td>
+                      <td>4</td>
+                      <td>9</td>
+                      <td>3+</td>
+                      <td></td>
+                    </tr>
+                  </table>
+                  <table cellspacing="-1">
+                    <tr>
+                      <th>Weapon</th>
+                      <th>Range</th>
+                      <th>Type</th>
+                      <th>S</th>
+                      <th>AP</th>
+                      <th>D</th>
+                      <th>Abilities</th>
+                      <th>Ref</th>
+                    </tr>
+                    <tr>
+                      <td class="profile-name">Bolt pistol</td>
+                      <td>12"</td>
+                      <td>Pistol 1</td>
+                      <td>4</td>
+                      <td>0</td>
+                      <td>1</td>
+                      <td>-</td>
+                      <td></td>
+                    </tr>
+                    <tr>
+                      <td class="profile-name">Frag grenades</td>
+                      <td>6"</td>
+                      <td>Grenade D6</td>
+                      <td>3</td>
+                      <td>0</td>
+                      <td>1</td>
+                      <td>Blast.</td>
+                      <td></td>
+                    </tr>
+                    <tr>
+                      <td class="profile-name">Heaven's Teeth</td>
+                      <td>Melee</td>
+                      <td>Melee</td>
+                      <td>+1</td>
+                      <td>-2</td>
+                      <td>1</td>
+                      <td>-</td>
+                      <td></td>
+                    </tr>
+                    <tr>
+                      <td class="profile-name">Krak grenades</td>
+                      <td>6"</td>
+                      <td>Grenade 1</td>
+                      <td>6</td>
+                      <td>-1</td>
+                      <td>D3</td>
+                      <td>-</td>
+                      <td></td>
+                    </tr>
+                  </table>
+                </li>
+                <li class="rootselection">
+                  <h4>Captain [5 PL, 90pts]</h4>
+                  <p>
+                    <span class="bold">Selections:</span> Archangel's Shard,
+                    Bolt pistol, Frag &amp; Krak grenades, Lightning Claw
+                    [5pts], Master-crafted boltgun, Warlord
+                  </p>
+                  <p class="category-names">
+                    <span class="bold">Categories:</span>
+                    <span class="caps"
+                      >Faction: Adeptus Astartes, Character, Faction: Imperium,
+                      Infantry, Captain, HQ, Warlord</span
+                    >
+                  </p>
+                  <p class="rule-names">
+                    <span class="bold">Rules:</span>
+                    <span class="italic"
+                      >Angels of Death, Savage Echoes, The Red Thirst</span
+                    >
+                  </p>
+                  <p class="profile-names">
+                    <span class="bold">Abilities:</span>
+                    <span class="italic">Iron Halo, Rites of Battle</span>,
+                    <span class="bold">Unit:</span>
+                    <span class="italic">Captain</span>,
+                    <span class="bold">Weapon:</span>
+                    <span class="italic"
+                      >Archangel's Shard, Bolt pistol, Frag grenades, Krak
+                      grenades, Lightning claw, Master-crafted boltgun</span
+                    >
+                  </p>
+                  <br />
+                  <table cellspacing="-1">
+                    <tr>
+                      <th>Abilities</th>
+                      <th>Description</th>
+                      <th>Ref</th>
+                    </tr>
+                    <tr>
+                      <td class="profile-name">Iron Halo</td>
+                      <td>This model has a 4+ invulnerable save.</td>
+                      <td></td>
+                    </tr>
+                    <tr>
+                      <td class="profile-name">Rites of Battle</td>
+                      <td>
+                        While a friendly &lt;CHAPTER&gt; CORE unit is within 6"
+                        of this model, each time a model in that unit makes an
+                        attack, re-roll a hit roll of 1
+                      </td>
+                      <td></td>
+                    </tr>
+                  </table>
+                  <table cellspacing="-1">
+                    <tr>
+                      <th>Unit</th>
+                      <th>M</th>
+                      <th>WS</th>
+                      <th>BS</th>
+                      <th>S</th>
+                      <th>T</th>
+                      <th>W</th>
+                      <th>A</th>
+                      <th>Ld</th>
+                      <th>Save</th>
+                      <th>Ref</th>
+                    </tr>
+                    <tr>
+                      <td class="profile-name">Captain</td>
+                      <td>6"</td>
+                      <td>2+</td>
+                      <td>2+</td>
+                      <td>4</td>
+                      <td>4</td>
+                      <td>5</td>
+                      <td>4</td>
+                      <td>9</td>
+                      <td>3+</td>
+                      <td></td>
+                    </tr>
+                  </table>
+                  <table cellspacing="-1">
+                    <tr>
+                      <th>Weapon</th>
+                      <th>Range</th>
+                      <th>Type</th>
+                      <th>S</th>
+                      <th>AP</th>
+                      <th>D</th>
+                      <th>Abilities</th>
+                      <th>Ref</th>
+                    </tr>
+                    <tr>
+                      <td class="profile-name">Archangel's Shard</td>
+                      <td>Melee</td>
+                      <td>Melee</td>
+                      <td>+2</td>
+                      <td>-4</td>
+                      <td>2</td>
+                      <td>
+                        Each time an attack made with this weapon is allocated
+                        to a model in a CHAOS unit, that attack has a Damage
+                        characteristic of 3. Each time an attack made with this
+                        weapon is allocated to a model in a CHAOS MONSTER unit,
+                        that attack has a Damage characteristic of 4.
+                      </td>
+                      <td></td>
+                    </tr>
+                    <tr>
+                      <td class="profile-name">Bolt pistol</td>
+                      <td>12"</td>
+                      <td>Pistol 1</td>
+                      <td>4</td>
+                      <td>0</td>
+                      <td>1</td>
+                      <td>-</td>
+                      <td></td>
+                    </tr>
+                    <tr>
+                      <td class="profile-name">Frag grenades</td>
+                      <td>6"</td>
+                      <td>Grenade D6</td>
+                      <td>3</td>
+                      <td>0</td>
+                      <td>1</td>
+                      <td>Blast.</td>
+                      <td></td>
+                    </tr>
+                    <tr>
+                      <td class="profile-name">Krak grenades</td>
+                      <td>6"</td>
+                      <td>Grenade 1</td>
+                      <td>6</td>
+                      <td>-1</td>
+                      <td>D3</td>
+                      <td>-</td>
+                      <td></td>
+                    </tr>
+                    <tr>
+                      <td class="profile-name">Lightning claw</td>
+                      <td>Melee</td>
+                      <td>Melee</td>
+                      <td>User</td>
+                      <td>-2</td>
+                      <td>1</td>
+                      <td>
+                        Each time the bearer fights, it makes 1 additional
+                        attack with this weapon. Each time an attack is made
+                        with this weapon, you can re-roll the wound roll.
+                      </td>
+                      <td></td>
+                    </tr>
+                    <tr>
+                      <td class="profile-name">Master-crafted boltgun</td>
+                      <td>24"</td>
+                      <td>Rapid Fire 1</td>
+                      <td>4</td>
+                      <td>-1</td>
+                      <td>2</td>
+                      <td>-</td>
+                      <td></td>
+                    </tr>
+                  </table>
+                </li>
+              </ul>
+            </li>
+            <li class="category">
+              <h3>Troops [30 PL, 570pts]</h3>
+              <ul>
+                <li class="rootselection">
+                  <h4>Assault Intercessor Squad [5 PL, 95pts]</h4>
+                  <p class="category-names">
+                    <span class="bold">Categories:</span>
+                    <span class="caps"
+                      >Faction: Imperium, Faction: Adeptus Astartes, Primaris,
+                      Infantry, Assault Intercessor Squad, Core, Intercessors,
+                      Troops</span
+                    >
+                  </p>
+                  <p class="rule-names">
+                    <span class="bold">Rules:</span>
+                    <span class="italic"
+                      >Angels of Death, Combat Squads, Savage Echoes, The Red
+                      Thirst</span
+                    >
+                  </p>
+                  <ul>
+                    <li>
+                      <h4>4x Assault Intercessor [76pts]</h4>
+                      <p>
+                        <span class="bold">Selections:</span> 4x Astartes
+                        Chainsword, 4x Frag &amp; Krak grenades, 4x Heavy Bolt
+                        Pistol
+                      </p>
+                      <p class="profile-names">
+                        <span class="bold">Unit:</span>
+                        <span class="italic">Assault Intercessor</span>,
+                        <span class="bold">Weapon:</span>
+                        <span class="italic"
+                          >Astartes Chainsword, Frag grenades, Heavy Bolt
+                          Pistol, Krak grenades</span
+                        >
+                      </p>
+                    </li>
+                    <li>
+                      <h4>Assault Intercessor Sgt [19pts]</h4>
+                      <p>
+                        <span class="bold">Selections:</span> Astartes
+                        Chainsword, Frag &amp; Krak grenades, Heavy Bolt Pistol
+                      </p>
+                      <p class="profile-names">
+                        <span class="bold">Unit:</span>
+                        <span class="italic">Assault Intercessor Sgt</span>,
+                        <span class="bold">Weapon:</span>
+                        <span class="italic"
+                          >Astartes Chainsword, Frag grenades, Heavy Bolt
+                          Pistol, Krak grenades</span
+                        >
+                      </p>
+                    </li>
+                  </ul>
+                  <br />
+                  <table cellspacing="-1">
+                    <tr>
+                      <th>Unit</th>
+                      <th>M</th>
+                      <th>WS</th>
+                      <th>BS</th>
+                      <th>S</th>
+                      <th>T</th>
+                      <th>W</th>
+                      <th>A</th>
+                      <th>Ld</th>
+                      <th>Save</th>
+                      <th>Ref</th>
+                    </tr>
+                    <tr>
+                      <td class="profile-name">Assault Intercessor</td>
+                      <td>6"</td>
+                      <td>3+</td>
+                      <td>3+</td>
+                      <td>4</td>
+                      <td>4</td>
+                      <td>2</td>
+                      <td>2</td>
+                      <td>7</td>
+                      <td>3+</td>
+                      <td></td>
+                    </tr>
+                    <tr>
+                      <td class="profile-name">Assault Intercessor Sgt</td>
+                      <td>6"</td>
+                      <td>3+</td>
+                      <td>3+</td>
+                      <td>4</td>
+                      <td>4</td>
+                      <td>2</td>
+                      <td>3</td>
+                      <td>8</td>
+                      <td>3+</td>
+                      <td></td>
+                    </tr>
+                  </table>
+                  <table cellspacing="-1">
+                    <tr>
+                      <th>Weapon</th>
+                      <th>Range</th>
+                      <th>Type</th>
+                      <th>S</th>
+                      <th>AP</th>
+                      <th>D</th>
+                      <th>Abilities</th>
+                      <th>Ref</th>
+                    </tr>
+                    <tr>
+                      <td class="profile-name">Astartes Chainsword</td>
+                      <td>Melee</td>
+                      <td>Melee</td>
+                      <td>User</td>
+                      <td>-1</td>
+                      <td>1</td>
+                      <td>
+                        When the bearer fights, it makes 1 additional attack
+                        with this weapon.
+                      </td>
+                      <td></td>
+                    </tr>
+                    <tr>
+                      <td class="profile-name">Frag grenades</td>
+                      <td>6"</td>
+                      <td>Grenade D6</td>
+                      <td>3</td>
+                      <td>0</td>
+                      <td>1</td>
+                      <td>Blast.</td>
+                      <td></td>
+                    </tr>
+                    <tr>
+                      <td class="profile-name">Heavy Bolt Pistol</td>
+                      <td>18"</td>
+                      <td>Pistol 1</td>
+                      <td>4</td>
+                      <td>-1</td>
+                      <td>1</td>
+                      <td>-</td>
+                      <td></td>
+                    </tr>
+                    <tr>
+                      <td class="profile-name">Krak grenades</td>
+                      <td>6"</td>
+                      <td>Grenade 1</td>
+                      <td>6</td>
+                      <td>-1</td>
+                      <td>D3</td>
+                      <td>-</td>
+                      <td></td>
+                    </tr>
+                  </table>
+                </li>
+                <li class="rootselection">
+                  <h4>Assault Intercessor Squad [5 PL, 95pts]</h4>
+                  <p class="category-names">
+                    <span class="bold">Categories:</span>
+                    <span class="caps"
+                      >Faction: Imperium, Faction: Adeptus Astartes, Primaris,
+                      Infantry, Assault Intercessor Squad, Core, Intercessors,
+                      Troops</span
+                    >
+                  </p>
+                  <p class="rule-names">
+                    <span class="bold">Rules:</span>
+                    <span class="italic"
+                      >Angels of Death, Combat Squads, Savage Echoes, The Red
+                      Thirst</span
+                    >
+                  </p>
+                  <ul>
+                    <li>
+                      <h4>4x Assault Intercessor [76pts]</h4>
+                      <p>
+                        <span class="bold">Selections:</span> 4x Astartes
+                        Chainsword, 4x Frag &amp; Krak grenades, 4x Heavy Bolt
+                        Pistol
+                      </p>
+                      <p class="profile-names">
+                        <span class="bold">Unit:</span>
+                        <span class="italic">Assault Intercessor</span>,
+                        <span class="bold">Weapon:</span>
+                        <span class="italic"
+                          >Astartes Chainsword, Frag grenades, Heavy Bolt
+                          Pistol, Krak grenades</span
+                        >
+                      </p>
+                    </li>
+                    <li>
+                      <h4>Assault Intercessor Sgt [19pts]</h4>
+                      <p>
+                        <span class="bold">Selections:</span> Astartes
+                        Chainsword, Frag &amp; Krak grenades, Heavy Bolt Pistol
+                      </p>
+                      <p class="profile-names">
+                        <span class="bold">Unit:</span>
+                        <span class="italic">Assault Intercessor Sgt</span>,
+                        <span class="bold">Weapon:</span>
+                        <span class="italic"
+                          >Astartes Chainsword, Frag grenades, Heavy Bolt
+                          Pistol, Krak grenades</span
+                        >
+                      </p>
+                    </li>
+                  </ul>
+                  <br />
+                  <table cellspacing="-1">
+                    <tr>
+                      <th>Unit</th>
+                      <th>M</th>
+                      <th>WS</th>
+                      <th>BS</th>
+                      <th>S</th>
+                      <th>T</th>
+                      <th>W</th>
+                      <th>A</th>
+                      <th>Ld</th>
+                      <th>Save</th>
+                      <th>Ref</th>
+                    </tr>
+                    <tr>
+                      <td class="profile-name">Assault Intercessor</td>
+                      <td>6"</td>
+                      <td>3+</td>
+                      <td>3+</td>
+                      <td>4</td>
+                      <td>4</td>
+                      <td>2</td>
+                      <td>2</td>
+                      <td>7</td>
+                      <td>3+</td>
+                      <td></td>
+                    </tr>
+                    <tr>
+                      <td class="profile-name">Assault Intercessor Sgt</td>
+                      <td>6"</td>
+                      <td>3+</td>
+                      <td>3+</td>
+                      <td>4</td>
+                      <td>4</td>
+                      <td>2</td>
+                      <td>3</td>
+                      <td>8</td>
+                      <td>3+</td>
+                      <td></td>
+                    </tr>
+                  </table>
+                  <table cellspacing="-1">
+                    <tr>
+                      <th>Weapon</th>
+                      <th>Range</th>
+                      <th>Type</th>
+                      <th>S</th>
+                      <th>AP</th>
+                      <th>D</th>
+                      <th>Abilities</th>
+                      <th>Ref</th>
+                    </tr>
+                    <tr>
+                      <td class="profile-name">Astartes Chainsword</td>
+                      <td>Melee</td>
+                      <td>Melee</td>
+                      <td>User</td>
+                      <td>-1</td>
+                      <td>1</td>
+                      <td>
+                        When the bearer fights, it makes 1 additional attack
+                        with this weapon.
+                      </td>
+                      <td></td>
+                    </tr>
+                    <tr>
+                      <td class="profile-name">Frag grenades</td>
+                      <td>6"</td>
+                      <td>Grenade D6</td>
+                      <td>3</td>
+                      <td>0</td>
+                      <td>1</td>
+                      <td>Blast.</td>
+                      <td></td>
+                    </tr>
+                    <tr>
+                      <td class="profile-name">Heavy Bolt Pistol</td>
+                      <td>18"</td>
+                      <td>Pistol 1</td>
+                      <td>4</td>
+                      <td>-1</td>
+                      <td>1</td>
+                      <td>-</td>
+                      <td></td>
+                    </tr>
+                    <tr>
+                      <td class="profile-name">Krak grenades</td>
+                      <td>6"</td>
+                      <td>Grenade 1</td>
+                      <td>6</td>
+                      <td>-1</td>
+                      <td>D3</td>
+                      <td>-</td>
+                      <td></td>
+                    </tr>
+                  </table>
+                </li>
+                <li class="rootselection">
+                  <h4>Assault Intercessor Squad [5 PL, 95pts]</h4>
+                  <p class="category-names">
+                    <span class="bold">Categories:</span>
+                    <span class="caps"
+                      >Faction: Imperium, Faction: Adeptus Astartes, Primaris,
+                      Infantry, Assault Intercessor Squad, Core, Intercessors,
+                      Troops</span
+                    >
+                  </p>
+                  <p class="rule-names">
+                    <span class="bold">Rules:</span>
+                    <span class="italic"
+                      >Angels of Death, Combat Squads, Savage Echoes, The Red
+                      Thirst</span
+                    >
+                  </p>
+                  <ul>
+                    <li>
+                      <h4>4x Assault Intercessor [76pts]</h4>
+                      <p>
+                        <span class="bold">Selections:</span> 4x Astartes
+                        Chainsword, 4x Frag &amp; Krak grenades, 4x Heavy Bolt
+                        Pistol
+                      </p>
+                      <p class="profile-names">
+                        <span class="bold">Unit:</span>
+                        <span class="italic">Assault Intercessor</span>,
+                        <span class="bold">Weapon:</span>
+                        <span class="italic"
+                          >Astartes Chainsword, Frag grenades, Heavy Bolt
+                          Pistol, Krak grenades</span
+                        >
+                      </p>
+                    </li>
+                    <li>
+                      <h4>Assault Intercessor Sgt [19pts]</h4>
+                      <p>
+                        <span class="bold">Selections:</span> Astartes
+                        Chainsword, Frag &amp; Krak grenades, Heavy Bolt Pistol
+                      </p>
+                      <p class="profile-names">
+                        <span class="bold">Unit:</span>
+                        <span class="italic">Assault Intercessor Sgt</span>,
+                        <span class="bold">Weapon:</span>
+                        <span class="italic"
+                          >Astartes Chainsword, Frag grenades, Heavy Bolt
+                          Pistol, Krak grenades</span
+                        >
+                      </p>
+                    </li>
+                  </ul>
+                  <br />
+                  <table cellspacing="-1">
+                    <tr>
+                      <th>Unit</th>
+                      <th>M</th>
+                      <th>WS</th>
+                      <th>BS</th>
+                      <th>S</th>
+                      <th>T</th>
+                      <th>W</th>
+                      <th>A</th>
+                      <th>Ld</th>
+                      <th>Save</th>
+                      <th>Ref</th>
+                    </tr>
+                    <tr>
+                      <td class="profile-name">Assault Intercessor</td>
+                      <td>6"</td>
+                      <td>3+</td>
+                      <td>3+</td>
+                      <td>4</td>
+                      <td>4</td>
+                      <td>2</td>
+                      <td>2</td>
+                      <td>7</td>
+                      <td>3+</td>
+                      <td></td>
+                    </tr>
+                    <tr>
+                      <td class="profile-name">Assault Intercessor Sgt</td>
+                      <td>6"</td>
+                      <td>3+</td>
+                      <td>3+</td>
+                      <td>4</td>
+                      <td>4</td>
+                      <td>2</td>
+                      <td>3</td>
+                      <td>8</td>
+                      <td>3+</td>
+                      <td></td>
+                    </tr>
+                  </table>
+                  <table cellspacing="-1">
+                    <tr>
+                      <th>Weapon</th>
+                      <th>Range</th>
+                      <th>Type</th>
+                      <th>S</th>
+                      <th>AP</th>
+                      <th>D</th>
+                      <th>Abilities</th>
+                      <th>Ref</th>
+                    </tr>
+                    <tr>
+                      <td class="profile-name">Astartes Chainsword</td>
+                      <td>Melee</td>
+                      <td>Melee</td>
+                      <td>User</td>
+                      <td>-1</td>
+                      <td>1</td>
+                      <td>
+                        When the bearer fights, it makes 1 additional attack
+                        with this weapon.
+                      </td>
+                      <td></td>
+                    </tr>
+                    <tr>
+                      <td class="profile-name">Frag grenades</td>
+                      <td>6"</td>
+                      <td>Grenade D6</td>
+                      <td>3</td>
+                      <td>0</td>
+                      <td>1</td>
+                      <td>Blast.</td>
+                      <td></td>
+                    </tr>
+                    <tr>
+                      <td class="profile-name">Heavy Bolt Pistol</td>
+                      <td>18"</td>
+                      <td>Pistol 1</td>
+                      <td>4</td>
+                      <td>-1</td>
+                      <td>1</td>
+                      <td>-</td>
+                      <td></td>
+                    </tr>
+                    <tr>
+                      <td class="profile-name">Krak grenades</td>
+                      <td>6"</td>
+                      <td>Grenade 1</td>
+                      <td>6</td>
+                      <td>-1</td>
+                      <td>D3</td>
+                      <td>-</td>
+                      <td></td>
+                    </tr>
+                  </table>
+                </li>
+                <li class="rootselection">
+                  <h4>Assault Intercessor Squad [5 PL, 95pts]</h4>
+                  <p class="category-names">
+                    <span class="bold">Categories:</span>
+                    <span class="caps"
+                      >Faction: Imperium, Faction: Adeptus Astartes, Primaris,
+                      Infantry, Assault Intercessor Squad, Core, Intercessors,
+                      Troops</span
+                    >
+                  </p>
+                  <p class="rule-names">
+                    <span class="bold">Rules:</span>
+                    <span class="italic"
+                      >Angels of Death, Combat Squads, Savage Echoes, The Red
+                      Thirst</span
+                    >
+                  </p>
+                  <ul>
+                    <li>
+                      <h4>4x Assault Intercessor [76pts]</h4>
+                      <p>
+                        <span class="bold">Selections:</span> 4x Astartes
+                        Chainsword, 4x Frag &amp; Krak grenades, 4x Heavy Bolt
+                        Pistol
+                      </p>
+                      <p class="profile-names">
+                        <span class="bold">Unit:</span>
+                        <span class="italic">Assault Intercessor</span>,
+                        <span class="bold">Weapon:</span>
+                        <span class="italic"
+                          >Astartes Chainsword, Frag grenades, Heavy Bolt
+                          Pistol, Krak grenades</span
+                        >
+                      </p>
+                    </li>
+                    <li>
+                      <h4>Assault Intercessor Sgt [19pts]</h4>
+                      <p>
+                        <span class="bold">Selections:</span> Astartes
+                        Chainsword, Frag &amp; Krak grenades, Heavy Bolt Pistol
+                      </p>
+                      <p class="profile-names">
+                        <span class="bold">Unit:</span>
+                        <span class="italic">Assault Intercessor Sgt</span>,
+                        <span class="bold">Weapon:</span>
+                        <span class="italic"
+                          >Astartes Chainsword, Frag grenades, Heavy Bolt
+                          Pistol, Krak grenades</span
+                        >
+                      </p>
+                    </li>
+                  </ul>
+                  <br />
+                  <table cellspacing="-1">
+                    <tr>
+                      <th>Unit</th>
+                      <th>M</th>
+                      <th>WS</th>
+                      <th>BS</th>
+                      <th>S</th>
+                      <th>T</th>
+                      <th>W</th>
+                      <th>A</th>
+                      <th>Ld</th>
+                      <th>Save</th>
+                      <th>Ref</th>
+                    </tr>
+                    <tr>
+                      <td class="profile-name">Assault Intercessor</td>
+                      <td>6"</td>
+                      <td>3+</td>
+                      <td>3+</td>
+                      <td>4</td>
+                      <td>4</td>
+                      <td>2</td>
+                      <td>2</td>
+                      <td>7</td>
+                      <td>3+</td>
+                      <td></td>
+                    </tr>
+                    <tr>
+                      <td class="profile-name">Assault Intercessor Sgt</td>
+                      <td>6"</td>
+                      <td>3+</td>
+                      <td>3+</td>
+                      <td>4</td>
+                      <td>4</td>
+                      <td>2</td>
+                      <td>3</td>
+                      <td>8</td>
+                      <td>3+</td>
+                      <td></td>
+                    </tr>
+                  </table>
+                  <table cellspacing="-1">
+                    <tr>
+                      <th>Weapon</th>
+                      <th>Range</th>
+                      <th>Type</th>
+                      <th>S</th>
+                      <th>AP</th>
+                      <th>D</th>
+                      <th>Abilities</th>
+                      <th>Ref</th>
+                    </tr>
+                    <tr>
+                      <td class="profile-name">Astartes Chainsword</td>
+                      <td>Melee</td>
+                      <td>Melee</td>
+                      <td>User</td>
+                      <td>-1</td>
+                      <td>1</td>
+                      <td>
+                        When the bearer fights, it makes 1 additional attack
+                        with this weapon.
+                      </td>
+                      <td></td>
+                    </tr>
+                    <tr>
+                      <td class="profile-name">Frag grenades</td>
+                      <td>6"</td>
+                      <td>Grenade D6</td>
+                      <td>3</td>
+                      <td>0</td>
+                      <td>1</td>
+                      <td>Blast.</td>
+                      <td></td>
+                    </tr>
+                    <tr>
+                      <td class="profile-name">Heavy Bolt Pistol</td>
+                      <td>18"</td>
+                      <td>Pistol 1</td>
+                      <td>4</td>
+                      <td>-1</td>
+                      <td>1</td>
+                      <td>-</td>
+                      <td></td>
+                    </tr>
+                    <tr>
+                      <td class="profile-name">Krak grenades</td>
+                      <td>6"</td>
+                      <td>Grenade 1</td>
+                      <td>6</td>
+                      <td>-1</td>
+                      <td>D3</td>
+                      <td>-</td>
+                      <td></td>
+                    </tr>
+                  </table>
+                </li>
+                <li class="rootselection">
+                  <h4>Assault Intercessor Squad [5 PL, 95pts]</h4>
+                  <p class="category-names">
+                    <span class="bold">Categories:</span>
+                    <span class="caps"
+                      >Faction: Imperium, Faction: Adeptus Astartes, Primaris,
+                      Infantry, Assault Intercessor Squad, Core, Intercessors,
+                      Troops</span
+                    >
+                  </p>
+                  <p class="rule-names">
+                    <span class="bold">Rules:</span>
+                    <span class="italic"
+                      >Angels of Death, Combat Squads, Savage Echoes, The Red
+                      Thirst</span
+                    >
+                  </p>
+                  <ul>
+                    <li>
+                      <h4>4x Assault Intercessor [76pts]</h4>
+                      <p>
+                        <span class="bold">Selections:</span> 4x Astartes
+                        Chainsword, 4x Frag &amp; Krak grenades, 4x Heavy Bolt
+                        Pistol
+                      </p>
+                      <p class="profile-names">
+                        <span class="bold">Unit:</span>
+                        <span class="italic">Assault Intercessor</span>,
+                        <span class="bold">Weapon:</span>
+                        <span class="italic"
+                          >Astartes Chainsword, Frag grenades, Heavy Bolt
+                          Pistol, Krak grenades</span
+                        >
+                      </p>
+                    </li>
+                    <li>
+                      <h4>Assault Intercessor Sgt [19pts]</h4>
+                      <p>
+                        <span class="bold">Selections:</span> Astartes
+                        Chainsword, Frag &amp; Krak grenades, Heavy Bolt Pistol
+                      </p>
+                      <p class="profile-names">
+                        <span class="bold">Unit:</span>
+                        <span class="italic">Assault Intercessor Sgt</span>,
+                        <span class="bold">Weapon:</span>
+                        <span class="italic"
+                          >Astartes Chainsword, Frag grenades, Heavy Bolt
+                          Pistol, Krak grenades</span
+                        >
+                      </p>
+                    </li>
+                  </ul>
+                  <br />
+                  <table cellspacing="-1">
+                    <tr>
+                      <th>Unit</th>
+                      <th>M</th>
+                      <th>WS</th>
+                      <th>BS</th>
+                      <th>S</th>
+                      <th>T</th>
+                      <th>W</th>
+                      <th>A</th>
+                      <th>Ld</th>
+                      <th>Save</th>
+                      <th>Ref</th>
+                    </tr>
+                    <tr>
+                      <td class="profile-name">Assault Intercessor</td>
+                      <td>6"</td>
+                      <td>3+</td>
+                      <td>3+</td>
+                      <td>4</td>
+                      <td>4</td>
+                      <td>2</td>
+                      <td>2</td>
+                      <td>7</td>
+                      <td>3+</td>
+                      <td></td>
+                    </tr>
+                    <tr>
+                      <td class="profile-name">Assault Intercessor Sgt</td>
+                      <td>6"</td>
+                      <td>3+</td>
+                      <td>3+</td>
+                      <td>4</td>
+                      <td>4</td>
+                      <td>2</td>
+                      <td>3</td>
+                      <td>8</td>
+                      <td>3+</td>
+                      <td></td>
+                    </tr>
+                  </table>
+                  <table cellspacing="-1">
+                    <tr>
+                      <th>Weapon</th>
+                      <th>Range</th>
+                      <th>Type</th>
+                      <th>S</th>
+                      <th>AP</th>
+                      <th>D</th>
+                      <th>Abilities</th>
+                      <th>Ref</th>
+                    </tr>
+                    <tr>
+                      <td class="profile-name">Astartes Chainsword</td>
+                      <td>Melee</td>
+                      <td>Melee</td>
+                      <td>User</td>
+                      <td>-1</td>
+                      <td>1</td>
+                      <td>
+                        When the bearer fights, it makes 1 additional attack
+                        with this weapon.
+                      </td>
+                      <td></td>
+                    </tr>
+                    <tr>
+                      <td class="profile-name">Frag grenades</td>
+                      <td>6"</td>
+                      <td>Grenade D6</td>
+                      <td>3</td>
+                      <td>0</td>
+                      <td>1</td>
+                      <td>Blast.</td>
+                      <td></td>
+                    </tr>
+                    <tr>
+                      <td class="profile-name">Heavy Bolt Pistol</td>
+                      <td>18"</td>
+                      <td>Pistol 1</td>
+                      <td>4</td>
+                      <td>-1</td>
+                      <td>1</td>
+                      <td>-</td>
+                      <td></td>
+                    </tr>
+                    <tr>
+                      <td class="profile-name">Krak grenades</td>
+                      <td>6"</td>
+                      <td>Grenade 1</td>
+                      <td>6</td>
+                      <td>-1</td>
+                      <td>D3</td>
+                      <td>-</td>
+                      <td></td>
+                    </tr>
+                  </table>
+                </li>
+                <li class="rootselection">
+                  <h4>Assault Intercessor Squad [5 PL, 95pts]</h4>
+                  <p class="category-names">
+                    <span class="bold">Categories:</span>
+                    <span class="caps"
+                      >Faction: Imperium, Faction: Adeptus Astartes, Primaris,
+                      Infantry, Assault Intercessor Squad, Core, Intercessors,
+                      Troops</span
+                    >
+                  </p>
+                  <p class="rule-names">
+                    <span class="bold">Rules:</span>
+                    <span class="italic"
+                      >Angels of Death, Combat Squads, Savage Echoes, The Red
+                      Thirst</span
+                    >
+                  </p>
+                  <ul>
+                    <li>
+                      <h4>4x Assault Intercessor [76pts]</h4>
+                      <p>
+                        <span class="bold">Selections:</span> 4x Astartes
+                        Chainsword, 4x Frag &amp; Krak grenades, 4x Heavy Bolt
+                        Pistol
+                      </p>
+                      <p class="profile-names">
+                        <span class="bold">Unit:</span>
+                        <span class="italic">Assault Intercessor</span>,
+                        <span class="bold">Weapon:</span>
+                        <span class="italic"
+                          >Astartes Chainsword, Frag grenades, Heavy Bolt
+                          Pistol, Krak grenades</span
+                        >
+                      </p>
+                    </li>
+                    <li>
+                      <h4>Assault Intercessor Sgt [19pts]</h4>
+                      <p>
+                        <span class="bold">Selections:</span> Astartes
+                        Chainsword, Frag &amp; Krak grenades, Heavy Bolt Pistol
+                      </p>
+                      <p class="profile-names">
+                        <span class="bold">Unit:</span>
+                        <span class="italic">Assault Intercessor Sgt</span>,
+                        <span class="bold">Weapon:</span>
+                        <span class="italic"
+                          >Astartes Chainsword, Frag grenades, Heavy Bolt
+                          Pistol, Krak grenades</span
+                        >
+                      </p>
+                    </li>
+                  </ul>
+                  <br />
+                  <table cellspacing="-1">
+                    <tr>
+                      <th>Unit</th>
+                      <th>M</th>
+                      <th>WS</th>
+                      <th>BS</th>
+                      <th>S</th>
+                      <th>T</th>
+                      <th>W</th>
+                      <th>A</th>
+                      <th>Ld</th>
+                      <th>Save</th>
+                      <th>Ref</th>
+                    </tr>
+                    <tr>
+                      <td class="profile-name">Assault Intercessor</td>
+                      <td>6"</td>
+                      <td>3+</td>
+                      <td>3+</td>
+                      <td>4</td>
+                      <td>4</td>
+                      <td>2</td>
+                      <td>2</td>
+                      <td>7</td>
+                      <td>3+</td>
+                      <td></td>
+                    </tr>
+                    <tr>
+                      <td class="profile-name">Assault Intercessor Sgt</td>
+                      <td>6"</td>
+                      <td>3+</td>
+                      <td>3+</td>
+                      <td>4</td>
+                      <td>4</td>
+                      <td>2</td>
+                      <td>3</td>
+                      <td>8</td>
+                      <td>3+</td>
+                      <td></td>
+                    </tr>
+                  </table>
+                  <table cellspacing="-1">
+                    <tr>
+                      <th>Weapon</th>
+                      <th>Range</th>
+                      <th>Type</th>
+                      <th>S</th>
+                      <th>AP</th>
+                      <th>D</th>
+                      <th>Abilities</th>
+                      <th>Ref</th>
+                    </tr>
+                    <tr>
+                      <td class="profile-name">Astartes Chainsword</td>
+                      <td>Melee</td>
+                      <td>Melee</td>
+                      <td>User</td>
+                      <td>-1</td>
+                      <td>1</td>
+                      <td>
+                        When the bearer fights, it makes 1 additional attack
+                        with this weapon.
+                      </td>
+                      <td></td>
+                    </tr>
+                    <tr>
+                      <td class="profile-name">Frag grenades</td>
+                      <td>6"</td>
+                      <td>Grenade D6</td>
+                      <td>3</td>
+                      <td>0</td>
+                      <td>1</td>
+                      <td>Blast.</td>
+                      <td></td>
+                    </tr>
+                    <tr>
+                      <td class="profile-name">Heavy Bolt Pistol</td>
+                      <td>18"</td>
+                      <td>Pistol 1</td>
+                      <td>4</td>
+                      <td>-1</td>
+                      <td>1</td>
+                      <td>-</td>
+                      <td></td>
+                    </tr>
+                    <tr>
+                      <td class="profile-name">Krak grenades</td>
+                      <td>6"</td>
+                      <td>Grenade 1</td>
+                      <td>6</td>
+                      <td>-1</td>
+                      <td>D3</td>
+                      <td>-</td>
+                      <td></td>
+                    </tr>
+                  </table>
+                </li>
+              </ul>
+            </li>
+            <li class="category">
+              <h3>Elites [18 PL, 360pts]</h3>
+              <ul>
+                <li class="rootselection">
+                  <h4>Aggressor Squad [6 PL, 120pts]</h4>
+                  <p>
+                    <span class="bold">Selections:</span> 2x Flamestorm
+                    Gauntlets, 2x Aggressor [80pts], Aggressor Sergeant [40pts]
+                  </p>
+                  <p class="category-names">
+                    <span class="bold">Categories:</span>
+                    <span class="caps"
+                      >Faction: Adeptus Astartes, Aggressor Squad, Faction:
+                      Imperium, Infantry, Mk X Gravis, Primaris, Core,
+                      Elites</span
+                    >
+                  </p>
+                  <p class="rule-names">
+                    <span class="bold">Rules:</span>
+                    <span class="italic"
+                      >Angels of Death, Combat Squads, Savage Echoes, The Red
+                      Thirst</span
+                    >
+                  </p>
+                  <p class="profile-names">
+                    <span class="bold">Unit:</span>
+                    <span class="italic">Aggressor, Aggressor Sergeant</span>,
+                    <span class="bold">Weapon:</span>
+                    <span class="italic"
+                      >Flamestorm Gauntlets (Melee), Flamestorm Gauntlets
+                      (Shooting)</span
+                    >
+                  </p>
+                  <br />
+                  <table cellspacing="-1">
+                    <tr>
+                      <th>Unit</th>
+                      <th>M</th>
+                      <th>WS</th>
+                      <th>BS</th>
+                      <th>S</th>
+                      <th>T</th>
+                      <th>W</th>
+                      <th>A</th>
+                      <th>Ld</th>
+                      <th>Save</th>
+                      <th>Ref</th>
+                    </tr>
+                    <tr>
+                      <td class="profile-name">Aggressor</td>
+                      <td>5"</td>
+                      <td>3+</td>
+                      <td>3+</td>
+                      <td>4</td>
+                      <td>5</td>
+                      <td>3</td>
+                      <td>3</td>
+                      <td>7</td>
+                      <td>3+</td>
+                      <td></td>
+                    </tr>
+                    <tr>
+                      <td class="profile-name">Aggressor Sergeant</td>
+                      <td>5"</td>
+                      <td>3+</td>
+                      <td>3+</td>
+                      <td>4</td>
+                      <td>5</td>
+                      <td>3</td>
+                      <td>4</td>
+                      <td>8</td>
+                      <td>3+</td>
+                      <td></td>
+                    </tr>
+                  </table>
+                  <table cellspacing="-1">
+                    <tr>
+                      <th>Weapon</th>
+                      <th>Range</th>
+                      <th>Type</th>
+                      <th>S</th>
+                      <th>AP</th>
+                      <th>D</th>
+                      <th>Abilities</th>
+                      <th>Ref</th>
+                    </tr>
+                    <tr>
+                      <td class="profile-name">Flamestorm Gauntlets (Melee)</td>
+                      <td>Melee</td>
+                      <td>Melee</td>
+                      <td>x2</td>
+                      <td>-3</td>
+                      <td>2</td>
+                      <td>
+                        When attacking with this weapon, you must subtract 1
+                        from the hit rolls.
+                      </td>
+                      <td></td>
+                    </tr>
+                    <tr>
+                      <td class="profile-name">
+                        Flamestorm Gauntlets (Shooting)
+                      </td>
+                      <td>12"</td>
+                      <td>Assault D6</td>
+                      <td>4</td>
+                      <td>0</td>
+                      <td>1</td>
+                      <td>This weapon automatically hits its target.</td>
+                      <td></td>
+                    </tr>
+                  </table>
+                </li>
+                <li class="rootselection">
+                  <h4>Aggressor Squad [6 PL, 120pts]</h4>
+                  <p>
+                    <span class="bold">Selections:</span> 2x Flamestorm
+                    Gauntlets, 2x Aggressor [80pts], Aggressor Sergeant [40pts]
+                  </p>
+                  <p class="category-names">
+                    <span class="bold">Categories:</span>
+                    <span class="caps"
+                      >Faction: Adeptus Astartes, Aggressor Squad, Faction:
+                      Imperium, Infantry, Mk X Gravis, Primaris, Core,
+                      Elites</span
+                    >
+                  </p>
+                  <p class="rule-names">
+                    <span class="bold">Rules:</span>
+                    <span class="italic"
+                      >Angels of Death, Combat Squads, Savage Echoes, The Red
+                      Thirst</span
+                    >
+                  </p>
+                  <p class="profile-names">
+                    <span class="bold">Unit:</span>
+                    <span class="italic">Aggressor, Aggressor Sergeant</span>,
+                    <span class="bold">Weapon:</span>
+                    <span class="italic"
+                      >Flamestorm Gauntlets (Melee), Flamestorm Gauntlets
+                      (Shooting)</span
+                    >
+                  </p>
+                  <br />
+                  <table cellspacing="-1">
+                    <tr>
+                      <th>Unit</th>
+                      <th>M</th>
+                      <th>WS</th>
+                      <th>BS</th>
+                      <th>S</th>
+                      <th>T</th>
+                      <th>W</th>
+                      <th>A</th>
+                      <th>Ld</th>
+                      <th>Save</th>
+                      <th>Ref</th>
+                    </tr>
+                    <tr>
+                      <td class="profile-name">Aggressor</td>
+                      <td>5"</td>
+                      <td>3+</td>
+                      <td>3+</td>
+                      <td>4</td>
+                      <td>5</td>
+                      <td>3</td>
+                      <td>3</td>
+                      <td>7</td>
+                      <td>3+</td>
+                      <td></td>
+                    </tr>
+                    <tr>
+                      <td class="profile-name">Aggressor Sergeant</td>
+                      <td>5"</td>
+                      <td>3+</td>
+                      <td>3+</td>
+                      <td>4</td>
+                      <td>5</td>
+                      <td>3</td>
+                      <td>4</td>
+                      <td>8</td>
+                      <td>3+</td>
+                      <td></td>
+                    </tr>
+                  </table>
+                  <table cellspacing="-1">
+                    <tr>
+                      <th>Weapon</th>
+                      <th>Range</th>
+                      <th>Type</th>
+                      <th>S</th>
+                      <th>AP</th>
+                      <th>D</th>
+                      <th>Abilities</th>
+                      <th>Ref</th>
+                    </tr>
+                    <tr>
+                      <td class="profile-name">Flamestorm Gauntlets (Melee)</td>
+                      <td>Melee</td>
+                      <td>Melee</td>
+                      <td>x2</td>
+                      <td>-3</td>
+                      <td>2</td>
+                      <td>
+                        When attacking with this weapon, you must subtract 1
+                        from the hit rolls.
+                      </td>
+                      <td></td>
+                    </tr>
+                    <tr>
+                      <td class="profile-name">
+                        Flamestorm Gauntlets (Shooting)
+                      </td>
+                      <td>12"</td>
+                      <td>Assault D6</td>
+                      <td>4</td>
+                      <td>0</td>
+                      <td>1</td>
+                      <td>This weapon automatically hits its target.</td>
+                      <td></td>
+                    </tr>
+                  </table>
+                </li>
+                <li class="rootselection">
+                  <h4>Aggressor Squad [6 PL, 120pts]</h4>
+                  <p>
+                    <span class="bold">Selections:</span> 2x Flamestorm
+                    Gauntlets, 2x Aggressor [80pts], Aggressor Sergeant [40pts]
+                  </p>
+                  <p class="category-names">
+                    <span class="bold">Categories:</span>
+                    <span class="caps"
+                      >Faction: Adeptus Astartes, Aggressor Squad, Faction:
+                      Imperium, Infantry, Mk X Gravis, Primaris, Core,
+                      Elites</span
+                    >
+                  </p>
+                  <p class="rule-names">
+                    <span class="bold">Rules:</span>
+                    <span class="italic"
+                      >Angels of Death, Combat Squads, Savage Echoes, The Red
+                      Thirst</span
+                    >
+                  </p>
+                  <p class="profile-names">
+                    <span class="bold">Unit:</span>
+                    <span class="italic">Aggressor, Aggressor Sergeant</span>,
+                    <span class="bold">Weapon:</span>
+                    <span class="italic"
+                      >Flamestorm Gauntlets (Melee), Flamestorm Gauntlets
+                      (Shooting)</span
+                    >
+                  </p>
+                  <br />
+                  <table cellspacing="-1">
+                    <tr>
+                      <th>Unit</th>
+                      <th>M</th>
+                      <th>WS</th>
+                      <th>BS</th>
+                      <th>S</th>
+                      <th>T</th>
+                      <th>W</th>
+                      <th>A</th>
+                      <th>Ld</th>
+                      <th>Save</th>
+                      <th>Ref</th>
+                    </tr>
+                    <tr>
+                      <td class="profile-name">Aggressor</td>
+                      <td>5"</td>
+                      <td>3+</td>
+                      <td>3+</td>
+                      <td>4</td>
+                      <td>5</td>
+                      <td>3</td>
+                      <td>3</td>
+                      <td>7</td>
+                      <td>3+</td>
+                      <td></td>
+                    </tr>
+                    <tr>
+                      <td class="profile-name">Aggressor Sergeant</td>
+                      <td>5"</td>
+                      <td>3+</td>
+                      <td>3+</td>
+                      <td>4</td>
+                      <td>5</td>
+                      <td>3</td>
+                      <td>4</td>
+                      <td>8</td>
+                      <td>3+</td>
+                      <td></td>
+                    </tr>
+                  </table>
+                  <table cellspacing="-1">
+                    <tr>
+                      <th>Weapon</th>
+                      <th>Range</th>
+                      <th>Type</th>
+                      <th>S</th>
+                      <th>AP</th>
+                      <th>D</th>
+                      <th>Abilities</th>
+                      <th>Ref</th>
+                    </tr>
+                    <tr>
+                      <td class="profile-name">Flamestorm Gauntlets (Melee)</td>
+                      <td>Melee</td>
+                      <td>Melee</td>
+                      <td>x2</td>
+                      <td>-3</td>
+                      <td>2</td>
+                      <td>
+                        When attacking with this weapon, you must subtract 1
+                        from the hit rolls.
+                      </td>
+                      <td></td>
+                    </tr>
+                    <tr>
+                      <td class="profile-name">
+                        Flamestorm Gauntlets (Shooting)
+                      </td>
+                      <td>12"</td>
+                      <td>Assault D6</td>
+                      <td>4</td>
+                      <td>0</td>
+                      <td>1</td>
+                      <td>This weapon automatically hits its target.</td>
+                      <td></td>
+                    </tr>
+                  </table>
+                </li>
+              </ul>
+            </li>
+            <li class="category">
+              <h3>Fast Attack [15 PL, 270pts]</h3>
+              <ul>
+                <li class="rootselection">
+                  <h4>Assault Squad [5 PL, 90pts]</h4>
+                  <p class="category-names">
+                    <span class="bold">Categories:</span>
+                    <span class="caps"
+                      >Faction: Adeptus Astartes, Assault Squad, Faction:
+                      Imperium, Infantry, Melta Bombs, Core, Fast Attack</span
+                    >
+                  </p>
+                  <p class="rule-names">
+                    <span class="bold">Rules:</span>
+                    <span class="italic"
+                      >Angels of Death, Combat Squads, Savage Echoes, The Red
+                      Thirst</span
+                    >
+                  </p>
+                  <p class="profile-names">
+                    <span class="bold">Unit:</span>
+                    <span class="italic"
+                      >Assault Marine, Assault Marine Sergeant</span
+                    >
+                  </p>
+                  <ul>
+                    <li>
+                      <h4>4x Space Marine [72pts]</h4>
+                      <p>
+                        <span class="bold">Selections:</span> 4x Astartes
+                        Chainsword, 4x Bolt pistol, 4x Frag &amp; Krak grenades
+                      </p>
+                      <p class="profile-names">
+                        <span class="bold">Weapon:</span>
+                        <span class="italic"
+                          >Astartes Chainsword, Bolt pistol, Frag grenades, Krak
+                          grenades</span
+                        >
+                      </p>
+                    </li>
+                    <li>
+                      <h4>Space Marine Sergeant [18pts]</h4>
+                      <p>
+                        <span class="bold">Selections:</span> Bolt
+                        pistol/Chainsword, Frag &amp; Krak grenades
+                      </p>
+                      <p class="profile-names">
+                        <span class="bold">Weapon:</span>
+                        <span class="italic"
+                          >Astartes Chainsword, Bolt pistol, Frag grenades, Krak
+                          grenades</span
+                        >
+                      </p>
+                    </li>
+                  </ul>
+                  <br />
+                  <table cellspacing="-1">
+                    <tr>
+                      <th>Unit</th>
+                      <th>M</th>
+                      <th>WS</th>
+                      <th>BS</th>
+                      <th>S</th>
+                      <th>T</th>
+                      <th>W</th>
+                      <th>A</th>
+                      <th>Ld</th>
+                      <th>Save</th>
+                      <th>Ref</th>
+                    </tr>
+                    <tr>
+                      <td class="profile-name">Assault Marine</td>
+                      <td>6"</td>
+                      <td>3+</td>
+                      <td>3+</td>
+                      <td>4</td>
+                      <td>4</td>
+                      <td>2</td>
+                      <td>1</td>
+                      <td>7</td>
+                      <td>3+</td>
+                      <td></td>
+                    </tr>
+                    <tr>
+                      <td class="profile-name">Assault Marine Sergeant</td>
+                      <td>6"</td>
+                      <td>3+</td>
+                      <td>3+</td>
+                      <td>4</td>
+                      <td>4</td>
+                      <td>2</td>
+                      <td>2</td>
+                      <td>8</td>
+                      <td>3+</td>
+                      <td></td>
+                    </tr>
+                  </table>
+                  <table cellspacing="-1">
+                    <tr>
+                      <th>Weapon</th>
+                      <th>Range</th>
+                      <th>Type</th>
+                      <th>S</th>
+                      <th>AP</th>
+                      <th>D</th>
+                      <th>Abilities</th>
+                      <th>Ref</th>
+                    </tr>
+                    <tr>
+                      <td class="profile-name">Astartes Chainsword</td>
+                      <td>Melee</td>
+                      <td>Melee</td>
+                      <td>User</td>
+                      <td>-1</td>
+                      <td>1</td>
+                      <td>
+                        When the bearer fights, it makes 1 additional attack
+                        with this weapon.
+                      </td>
+                      <td></td>
+                    </tr>
+                    <tr>
+                      <td class="profile-name">Bolt pistol</td>
+                      <td>12"</td>
+                      <td>Pistol 1</td>
+                      <td>4</td>
+                      <td>0</td>
+                      <td>1</td>
+                      <td>-</td>
+                      <td></td>
+                    </tr>
+                    <tr>
+                      <td class="profile-name">Frag grenades</td>
+                      <td>6"</td>
+                      <td>Grenade D6</td>
+                      <td>3</td>
+                      <td>0</td>
+                      <td>1</td>
+                      <td>Blast.</td>
+                      <td></td>
+                    </tr>
+                    <tr>
+                      <td class="profile-name">Krak grenades</td>
+                      <td>6"</td>
+                      <td>Grenade 1</td>
+                      <td>6</td>
+                      <td>-1</td>
+                      <td>D3</td>
+                      <td>-</td>
+                      <td></td>
+                    </tr>
+                  </table>
+                </li>
+                <li class="rootselection">
+                  <h4>Assault Squad [5 PL, 90pts]</h4>
+                  <p class="category-names">
+                    <span class="bold">Categories:</span>
+                    <span class="caps"
+                      >Faction: Adeptus Astartes, Assault Squad, Faction:
+                      Imperium, Infantry, Melta Bombs, Core, Fast Attack</span
+                    >
+                  </p>
+                  <p class="rule-names">
+                    <span class="bold">Rules:</span>
+                    <span class="italic"
+                      >Angels of Death, Combat Squads, Savage Echoes, The Red
+                      Thirst</span
+                    >
+                  </p>
+                  <p class="profile-names">
+                    <span class="bold">Unit:</span>
+                    <span class="italic"
+                      >Assault Marine, Assault Marine Sergeant</span
+                    >
+                  </p>
+                  <ul>
+                    <li>
+                      <h4>4x Space Marine [72pts]</h4>
+                      <p>
+                        <span class="bold">Selections:</span> 4x Astartes
+                        Chainsword, 4x Bolt pistol, 4x Frag &amp; Krak grenades
+                      </p>
+                      <p class="profile-names">
+                        <span class="bold">Weapon:</span>
+                        <span class="italic"
+                          >Astartes Chainsword, Bolt pistol, Frag grenades, Krak
+                          grenades</span
+                        >
+                      </p>
+                    </li>
+                    <li>
+                      <h4>Space Marine Sergeant [18pts]</h4>
+                      <p>
+                        <span class="bold">Selections:</span> Bolt
+                        pistol/Chainsword, Frag &amp; Krak grenades
+                      </p>
+                      <p class="profile-names">
+                        <span class="bold">Weapon:</span>
+                        <span class="italic"
+                          >Astartes Chainsword, Bolt pistol, Frag grenades, Krak
+                          grenades</span
+                        >
+                      </p>
+                    </li>
+                  </ul>
+                  <br />
+                  <table cellspacing="-1">
+                    <tr>
+                      <th>Unit</th>
+                      <th>M</th>
+                      <th>WS</th>
+                      <th>BS</th>
+                      <th>S</th>
+                      <th>T</th>
+                      <th>W</th>
+                      <th>A</th>
+                      <th>Ld</th>
+                      <th>Save</th>
+                      <th>Ref</th>
+                    </tr>
+                    <tr>
+                      <td class="profile-name">Assault Marine</td>
+                      <td>6"</td>
+                      <td>3+</td>
+                      <td>3+</td>
+                      <td>4</td>
+                      <td>4</td>
+                      <td>2</td>
+                      <td>1</td>
+                      <td>7</td>
+                      <td>3+</td>
+                      <td></td>
+                    </tr>
+                    <tr>
+                      <td class="profile-name">Assault Marine Sergeant</td>
+                      <td>6"</td>
+                      <td>3+</td>
+                      <td>3+</td>
+                      <td>4</td>
+                      <td>4</td>
+                      <td>2</td>
+                      <td>2</td>
+                      <td>8</td>
+                      <td>3+</td>
+                      <td></td>
+                    </tr>
+                  </table>
+                  <table cellspacing="-1">
+                    <tr>
+                      <th>Weapon</th>
+                      <th>Range</th>
+                      <th>Type</th>
+                      <th>S</th>
+                      <th>AP</th>
+                      <th>D</th>
+                      <th>Abilities</th>
+                      <th>Ref</th>
+                    </tr>
+                    <tr>
+                      <td class="profile-name">Astartes Chainsword</td>
+                      <td>Melee</td>
+                      <td>Melee</td>
+                      <td>User</td>
+                      <td>-1</td>
+                      <td>1</td>
+                      <td>
+                        When the bearer fights, it makes 1 additional attack
+                        with this weapon.
+                      </td>
+                      <td></td>
+                    </tr>
+                    <tr>
+                      <td class="profile-name">Bolt pistol</td>
+                      <td>12"</td>
+                      <td>Pistol 1</td>
+                      <td>4</td>
+                      <td>0</td>
+                      <td>1</td>
+                      <td>-</td>
+                      <td></td>
+                    </tr>
+                    <tr>
+                      <td class="profile-name">Frag grenades</td>
+                      <td>6"</td>
+                      <td>Grenade D6</td>
+                      <td>3</td>
+                      <td>0</td>
+                      <td>1</td>
+                      <td>Blast.</td>
+                      <td></td>
+                    </tr>
+                    <tr>
+                      <td class="profile-name">Krak grenades</td>
+                      <td>6"</td>
+                      <td>Grenade 1</td>
+                      <td>6</td>
+                      <td>-1</td>
+                      <td>D3</td>
+                      <td>-</td>
+                      <td></td>
+                    </tr>
+                  </table>
+                </li>
+                <li class="rootselection">
+                  <h4>Assault Squad [5 PL, 90pts]</h4>
+                  <p class="category-names">
+                    <span class="bold">Categories:</span>
+                    <span class="caps"
+                      >Faction: Adeptus Astartes, Assault Squad, Faction:
+                      Imperium, Infantry, Melta Bombs, Core, Fast Attack</span
+                    >
+                  </p>
+                  <p class="rule-names">
+                    <span class="bold">Rules:</span>
+                    <span class="italic"
+                      >Angels of Death, Combat Squads, Savage Echoes, The Red
+                      Thirst</span
+                    >
+                  </p>
+                  <p class="profile-names">
+                    <span class="bold">Unit:</span>
+                    <span class="italic"
+                      >Assault Marine, Assault Marine Sergeant</span
+                    >
+                  </p>
+                  <ul>
+                    <li>
+                      <h4>4x Space Marine [72pts]</h4>
+                      <p>
+                        <span class="bold">Selections:</span> 4x Astartes
+                        Chainsword, 4x Bolt pistol, 4x Frag &amp; Krak grenades
+                      </p>
+                      <p class="profile-names">
+                        <span class="bold">Weapon:</span>
+                        <span class="italic"
+                          >Astartes Chainsword, Bolt pistol, Frag grenades, Krak
+                          grenades</span
+                        >
+                      </p>
+                    </li>
+                    <li>
+                      <h4>Space Marine Sergeant [18pts]</h4>
+                      <p>
+                        <span class="bold">Selections:</span> Bolt
+                        pistol/Chainsword, Frag &amp; Krak grenades
+                      </p>
+                      <p class="profile-names">
+                        <span class="bold">Weapon:</span>
+                        <span class="italic"
+                          >Astartes Chainsword, Bolt pistol, Frag grenades, Krak
+                          grenades</span
+                        >
+                      </p>
+                    </li>
+                  </ul>
+                  <br />
+                  <table cellspacing="-1">
+                    <tr>
+                      <th>Unit</th>
+                      <th>M</th>
+                      <th>WS</th>
+                      <th>BS</th>
+                      <th>S</th>
+                      <th>T</th>
+                      <th>W</th>
+                      <th>A</th>
+                      <th>Ld</th>
+                      <th>Save</th>
+                      <th>Ref</th>
+                    </tr>
+                    <tr>
+                      <td class="profile-name">Assault Marine</td>
+                      <td>6"</td>
+                      <td>3+</td>
+                      <td>3+</td>
+                      <td>4</td>
+                      <td>4</td>
+                      <td>2</td>
+                      <td>1</td>
+                      <td>7</td>
+                      <td>3+</td>
+                      <td></td>
+                    </tr>
+                    <tr>
+                      <td class="profile-name">Assault Marine Sergeant</td>
+                      <td>6"</td>
+                      <td>3+</td>
+                      <td>3+</td>
+                      <td>4</td>
+                      <td>4</td>
+                      <td>2</td>
+                      <td>2</td>
+                      <td>8</td>
+                      <td>3+</td>
+                      <td></td>
+                    </tr>
+                  </table>
+                  <table cellspacing="-1">
+                    <tr>
+                      <th>Weapon</th>
+                      <th>Range</th>
+                      <th>Type</th>
+                      <th>S</th>
+                      <th>AP</th>
+                      <th>D</th>
+                      <th>Abilities</th>
+                      <th>Ref</th>
+                    </tr>
+                    <tr>
+                      <td class="profile-name">Astartes Chainsword</td>
+                      <td>Melee</td>
+                      <td>Melee</td>
+                      <td>User</td>
+                      <td>-1</td>
+                      <td>1</td>
+                      <td>
+                        When the bearer fights, it makes 1 additional attack
+                        with this weapon.
+                      </td>
+                      <td></td>
+                    </tr>
+                    <tr>
+                      <td class="profile-name">Bolt pistol</td>
+                      <td>12"</td>
+                      <td>Pistol 1</td>
+                      <td>4</td>
+                      <td>0</td>
+                      <td>1</td>
+                      <td>-</td>
+                      <td></td>
+                    </tr>
+                    <tr>
+                      <td class="profile-name">Frag grenades</td>
+                      <td>6"</td>
+                      <td>Grenade D6</td>
+                      <td>3</td>
+                      <td>0</td>
+                      <td>1</td>
+                      <td>Blast.</td>
+                      <td></td>
+                    </tr>
+                    <tr>
+                      <td class="profile-name">Krak grenades</td>
+                      <td>6"</td>
+                      <td>Grenade 1</td>
+                      <td>6</td>
+                      <td>-1</td>
+                      <td>D3</td>
+                      <td>-</td>
+                      <td></td>
+                    </tr>
+                  </table>
+                </li>
+              </ul>
+            </li>
+            <li class="category">
+              <h3>Heavy Support [24 PL, 390pts]</h3>
+              <ul>
+                <li class="rootselection">
+                  <h4>Baal Predator [8 PL, 130pts]</h4>
+                  <p>
+                    <span class="bold">Selections:</span> Twin assault cannon
+                    [10pts]
+                  </p>
+                  <p class="category-names">
+                    <span class="bold">Categories:</span>
+                    <span class="caps"
+                      >Faction: Blood Angels, Faction: Imperium, Heavy Support,
+                      Predator, Vehicle, Baal Predator, Smokescreen, Faction:
+                      Adeptus Astartes</span
+                    >
+                  </p>
+                  <p class="rule-names">
+                    <span class="bold">Rules:</span>
+                    <span class="italic"
+                      >Angels of Death, Savage Echoes, The Red Thirst</span
+                    >
+                  </p>
+                  <p class="profile-names">
+                    <span class="bold">Abilities:</span>
+                    <span class="italic"
+                      >Overcharged Engines, Shock Assault, Smoke Launchers</span
+                    >, <span class="bold">Explosion:</span>
+                    <span class="italic">Explodes</span>,
+                    <span class="bold">Unit:</span>
+                    <span class="italic">Baal Predator</span>,
+                    <span class="bold">Weapon:</span>
+                    <span class="italic">Twin assault cannon</span>,
+                    <span class="bold">Wound Track:</span>
+                    <span class="italic"
+                      >Baal Predator, Baal Predator 1, Baal Predator 2, Baal
+                      Predator 3</span
+                    >
+                  </p>
+                  <br />
+                  <table cellspacing="-1">
+                    <tr>
+                      <th>Abilities</th>
+                      <th>Description</th>
+                      <th>Ref</th>
+                    </tr>
+                    <tr>
+                      <td class="profile-name">Overcharged Engines</td>
+                      <td>
+                        Each time this model Advances, do not make an Advance
+                        roll. Instead, until the end of the phase, add 6" to the
+                        Move characteristic of this model.
+                      </td>
+                      <td></td>
+                    </tr>
+                    <tr>
+                      <td class="profile-name">Shock Assault</td>
+                      <td>
+                        If this unit makes a charge move, is charged or performs
+                        a Heroic Intervention, add 1 to the Attacks
+                        characteristic of models in this unit until the end of
+                        the turn.
+                      </td>
+                      <td></td>
+                    </tr>
+                    <tr>
+                      <td class="profile-name">Smoke Launchers</td>
+                      <td>
+                        Once per game, instead of shooting any weapons in the
+                        Shooting phase, the vehicle can use its Smoke Launchers;
+                        until your next Shooting phase your opponent must
+                        subtract 1 from all hit rolls for ranged weapons that
+                        target this vehicle.
+                      </td>
+                      <td>Warhammer 40,000 Core Book</td>
+                    </tr>
+                  </table>
+                  <table cellspacing="-1">
+                    <tr>
+                      <th>Explosion</th>
+                      <th>Dice roll</th>
+                      <th>Distance</th>
+                      <th>Mortal wounds</th>
+                      <th>Ref</th>
+                    </tr>
+                    <tr>
+                      <td class="profile-name">Explodes</td>
+                      <td>6</td>
+                      <td>6"</td>
+                      <td>D3</td>
+                      <td></td>
+                    </tr>
+                  </table>
+                  <table cellspacing="-1">
+                    <tr>
+                      <th>Unit</th>
+                      <th>M</th>
+                      <th>WS</th>
+                      <th>BS</th>
+                      <th>S</th>
+                      <th>T</th>
+                      <th>W</th>
+                      <th>A</th>
+                      <th>Ld</th>
+                      <th>Save</th>
+                      <th>Ref</th>
+                    </tr>
+                    <tr>
+                      <td class="profile-name">Baal Predator</td>
+                      <td>*</td>
+                      <td>6+</td>
+                      <td>*</td>
+                      <td>6</td>
+                      <td>7</td>
+                      <td>11</td>
+                      <td>*</td>
+                      <td>8</td>
+                      <td>3+</td>
+                      <td></td>
+                    </tr>
+                  </table>
+                  <table cellspacing="-1">
+                    <tr>
+                      <th>Weapon</th>
+                      <th>Range</th>
+                      <th>Type</th>
+                      <th>S</th>
+                      <th>AP</th>
+                      <th>D</th>
+                      <th>Abilities</th>
+                      <th>Ref</th>
+                    </tr>
+                    <tr>
+                      <td class="profile-name">Twin assault cannon</td>
+                      <td>24"</td>
+                      <td>Heavy 12</td>
+                      <td>6</td>
+                      <td>-1</td>
+                      <td>1</td>
+                      <td>-</td>
+                      <td></td>
+                    </tr>
+                  </table>
+                  <table cellspacing="-1">
+                    <tr>
+                      <th>Wound Track</th>
+                      <th>Remaining W</th>
+                      <th>Characteristic 1</th>
+                      <th>Characteristic 2</th>
+                      <th>Characteristic 3</th>
+                      <th>Ref</th>
+                    </tr>
+                    <tr>
+                      <td class="profile-name">Baal Predator</td>
+                      <td></td>
+                      <td>M</td>
+                      <td>BS</td>
+                      <td>A</td>
+                      <td></td>
+                    </tr>
+                    <tr>
+                      <td class="profile-name">Baal Predator 1</td>
+                      <td>6-11+</td>
+                      <td>12"</td>
+                      <td>3+</td>
+                      <td>3</td>
+                      <td></td>
+                    </tr>
+                    <tr>
+                      <td class="profile-name">Baal Predator 2</td>
+                      <td>3-5</td>
+                      <td>6"</td>
+                      <td>4+</td>
+                      <td>D3</td>
+                      <td></td>
+                    </tr>
+                    <tr>
+                      <td class="profile-name">Baal Predator 3</td>
+                      <td>1-2</td>
+                      <td>3"</td>
+                      <td>5+</td>
+                      <td>1</td>
+                      <td></td>
+                    </tr>
+                  </table>
+                </li>
+                <li class="rootselection">
+                  <h4>Baal Predator [8 PL, 130pts]</h4>
+                  <p>
+                    <span class="bold">Selections:</span> Twin assault cannon
+                    [10pts]
+                  </p>
+                  <p class="category-names">
+                    <span class="bold">Categories:</span>
+                    <span class="caps"
+                      >Faction: Blood Angels, Faction: Imperium, Heavy Support,
+                      Predator, Vehicle, Baal Predator, Smokescreen, Faction:
+                      Adeptus Astartes</span
+                    >
+                  </p>
+                  <p class="rule-names">
+                    <span class="bold">Rules:</span>
+                    <span class="italic"
+                      >Angels of Death, Savage Echoes, The Red Thirst</span
+                    >
+                  </p>
+                  <p class="profile-names">
+                    <span class="bold">Abilities:</span>
+                    <span class="italic"
+                      >Overcharged Engines, Shock Assault, Smoke Launchers</span
+                    >, <span class="bold">Explosion:</span>
+                    <span class="italic">Explodes</span>,
+                    <span class="bold">Unit:</span>
+                    <span class="italic">Baal Predator</span>,
+                    <span class="bold">Weapon:</span>
+                    <span class="italic">Twin assault cannon</span>,
+                    <span class="bold">Wound Track:</span>
+                    <span class="italic"
+                      >Baal Predator, Baal Predator 1, Baal Predator 2, Baal
+                      Predator 3</span
+                    >
+                  </p>
+                  <br />
+                  <table cellspacing="-1">
+                    <tr>
+                      <th>Abilities</th>
+                      <th>Description</th>
+                      <th>Ref</th>
+                    </tr>
+                    <tr>
+                      <td class="profile-name">Overcharged Engines</td>
+                      <td>
+                        Each time this model Advances, do not make an Advance
+                        roll. Instead, until the end of the phase, add 6" to the
+                        Move characteristic of this model.
+                      </td>
+                      <td></td>
+                    </tr>
+                    <tr>
+                      <td class="profile-name">Shock Assault</td>
+                      <td>
+                        If this unit makes a charge move, is charged or performs
+                        a Heroic Intervention, add 1 to the Attacks
+                        characteristic of models in this unit until the end of
+                        the turn.
+                      </td>
+                      <td></td>
+                    </tr>
+                    <tr>
+                      <td class="profile-name">Smoke Launchers</td>
+                      <td>
+                        Once per game, instead of shooting any weapons in the
+                        Shooting phase, the vehicle can use its Smoke Launchers;
+                        until your next Shooting phase your opponent must
+                        subtract 1 from all hit rolls for ranged weapons that
+                        target this vehicle.
+                      </td>
+                      <td>Warhammer 40,000 Core Book</td>
+                    </tr>
+                  </table>
+                  <table cellspacing="-1">
+                    <tr>
+                      <th>Explosion</th>
+                      <th>Dice roll</th>
+                      <th>Distance</th>
+                      <th>Mortal wounds</th>
+                      <th>Ref</th>
+                    </tr>
+                    <tr>
+                      <td class="profile-name">Explodes</td>
+                      <td>6</td>
+                      <td>6"</td>
+                      <td>D3</td>
+                      <td></td>
+                    </tr>
+                  </table>
+                  <table cellspacing="-1">
+                    <tr>
+                      <th>Unit</th>
+                      <th>M</th>
+                      <th>WS</th>
+                      <th>BS</th>
+                      <th>S</th>
+                      <th>T</th>
+                      <th>W</th>
+                      <th>A</th>
+                      <th>Ld</th>
+                      <th>Save</th>
+                      <th>Ref</th>
+                    </tr>
+                    <tr>
+                      <td class="profile-name">Baal Predator</td>
+                      <td>*</td>
+                      <td>6+</td>
+                      <td>*</td>
+                      <td>6</td>
+                      <td>7</td>
+                      <td>11</td>
+                      <td>*</td>
+                      <td>8</td>
+                      <td>3+</td>
+                      <td></td>
+                    </tr>
+                  </table>
+                  <table cellspacing="-1">
+                    <tr>
+                      <th>Weapon</th>
+                      <th>Range</th>
+                      <th>Type</th>
+                      <th>S</th>
+                      <th>AP</th>
+                      <th>D</th>
+                      <th>Abilities</th>
+                      <th>Ref</th>
+                    </tr>
+                    <tr>
+                      <td class="profile-name">Twin assault cannon</td>
+                      <td>24"</td>
+                      <td>Heavy 12</td>
+                      <td>6</td>
+                      <td>-1</td>
+                      <td>1</td>
+                      <td>-</td>
+                      <td></td>
+                    </tr>
+                  </table>
+                  <table cellspacing="-1">
+                    <tr>
+                      <th>Wound Track</th>
+                      <th>Remaining W</th>
+                      <th>Characteristic 1</th>
+                      <th>Characteristic 2</th>
+                      <th>Characteristic 3</th>
+                      <th>Ref</th>
+                    </tr>
+                    <tr>
+                      <td class="profile-name">Baal Predator</td>
+                      <td></td>
+                      <td>M</td>
+                      <td>BS</td>
+                      <td>A</td>
+                      <td></td>
+                    </tr>
+                    <tr>
+                      <td class="profile-name">Baal Predator 1</td>
+                      <td>6-11+</td>
+                      <td>12"</td>
+                      <td>3+</td>
+                      <td>3</td>
+                      <td></td>
+                    </tr>
+                    <tr>
+                      <td class="profile-name">Baal Predator 2</td>
+                      <td>3-5</td>
+                      <td>6"</td>
+                      <td>4+</td>
+                      <td>D3</td>
+                      <td></td>
+                    </tr>
+                    <tr>
+                      <td class="profile-name">Baal Predator 3</td>
+                      <td>1-2</td>
+                      <td>3"</td>
+                      <td>5+</td>
+                      <td>1</td>
+                      <td></td>
+                    </tr>
+                  </table>
+                </li>
+                <li class="rootselection">
+                  <h4>Baal Predator [8 PL, 130pts]</h4>
+                  <p>
+                    <span class="bold">Selections:</span> Twin assault cannon
+                    [10pts]
+                  </p>
+                  <p class="category-names">
+                    <span class="bold">Categories:</span>
+                    <span class="caps"
+                      >Faction: Blood Angels, Faction: Imperium, Heavy Support,
+                      Predator, Vehicle, Baal Predator, Smokescreen, Faction:
+                      Adeptus Astartes</span
+                    >
+                  </p>
+                  <p class="rule-names">
+                    <span class="bold">Rules:</span>
+                    <span class="italic"
+                      >Angels of Death, Savage Echoes, The Red Thirst</span
+                    >
+                  </p>
+                  <p class="profile-names">
+                    <span class="bold">Abilities:</span>
+                    <span class="italic"
+                      >Overcharged Engines, Shock Assault, Smoke Launchers</span
+                    >, <span class="bold">Explosion:</span>
+                    <span class="italic">Explodes</span>,
+                    <span class="bold">Unit:</span>
+                    <span class="italic">Baal Predator</span>,
+                    <span class="bold">Weapon:</span>
+                    <span class="italic">Twin assault cannon</span>,
+                    <span class="bold">Wound Track:</span>
+                    <span class="italic"
+                      >Baal Predator, Baal Predator 1, Baal Predator 2, Baal
+                      Predator 3</span
+                    >
+                  </p>
+                  <br />
+                  <table cellspacing="-1">
+                    <tr>
+                      <th>Abilities</th>
+                      <th>Description</th>
+                      <th>Ref</th>
+                    </tr>
+                    <tr>
+                      <td class="profile-name">Overcharged Engines</td>
+                      <td>
+                        Each time this model Advances, do not make an Advance
+                        roll. Instead, until the end of the phase, add 6" to the
+                        Move characteristic of this model.
+                      </td>
+                      <td></td>
+                    </tr>
+                    <tr>
+                      <td class="profile-name">Shock Assault</td>
+                      <td>
+                        If this unit makes a charge move, is charged or performs
+                        a Heroic Intervention, add 1 to the Attacks
+                        characteristic of models in this unit until the end of
+                        the turn.
+                      </td>
+                      <td></td>
+                    </tr>
+                    <tr>
+                      <td class="profile-name">Smoke Launchers</td>
+                      <td>
+                        Once per game, instead of shooting any weapons in the
+                        Shooting phase, the vehicle can use its Smoke Launchers;
+                        until your next Shooting phase your opponent must
+                        subtract 1 from all hit rolls for ranged weapons that
+                        target this vehicle.
+                      </td>
+                      <td>Warhammer 40,000 Core Book</td>
+                    </tr>
+                  </table>
+                  <table cellspacing="-1">
+                    <tr>
+                      <th>Explosion</th>
+                      <th>Dice roll</th>
+                      <th>Distance</th>
+                      <th>Mortal wounds</th>
+                      <th>Ref</th>
+                    </tr>
+                    <tr>
+                      <td class="profile-name">Explodes</td>
+                      <td>6</td>
+                      <td>6"</td>
+                      <td>D3</td>
+                      <td></td>
+                    </tr>
+                  </table>
+                  <table cellspacing="-1">
+                    <tr>
+                      <th>Unit</th>
+                      <th>M</th>
+                      <th>WS</th>
+                      <th>BS</th>
+                      <th>S</th>
+                      <th>T</th>
+                      <th>W</th>
+                      <th>A</th>
+                      <th>Ld</th>
+                      <th>Save</th>
+                      <th>Ref</th>
+                    </tr>
+                    <tr>
+                      <td class="profile-name">Baal Predator</td>
+                      <td>*</td>
+                      <td>6+</td>
+                      <td>*</td>
+                      <td>6</td>
+                      <td>7</td>
+                      <td>11</td>
+                      <td>*</td>
+                      <td>8</td>
+                      <td>3+</td>
+                      <td></td>
+                    </tr>
+                  </table>
+                  <table cellspacing="-1">
+                    <tr>
+                      <th>Weapon</th>
+                      <th>Range</th>
+                      <th>Type</th>
+                      <th>S</th>
+                      <th>AP</th>
+                      <th>D</th>
+                      <th>Abilities</th>
+                      <th>Ref</th>
+                    </tr>
+                    <tr>
+                      <td class="profile-name">Twin assault cannon</td>
+                      <td>24"</td>
+                      <td>Heavy 12</td>
+                      <td>6</td>
+                      <td>-1</td>
+                      <td>1</td>
+                      <td>-</td>
+                      <td></td>
+                    </tr>
+                  </table>
+                  <table cellspacing="-1">
+                    <tr>
+                      <th>Wound Track</th>
+                      <th>Remaining W</th>
+                      <th>Characteristic 1</th>
+                      <th>Characteristic 2</th>
+                      <th>Characteristic 3</th>
+                      <th>Ref</th>
+                    </tr>
+                    <tr>
+                      <td class="profile-name">Baal Predator</td>
+                      <td></td>
+                      <td>M</td>
+                      <td>BS</td>
+                      <td>A</td>
+                      <td></td>
+                    </tr>
+                    <tr>
+                      <td class="profile-name">Baal Predator 1</td>
+                      <td>6-11+</td>
+                      <td>12"</td>
+                      <td>3+</td>
+                      <td>3</td>
+                      <td></td>
+                    </tr>
+                    <tr>
+                      <td class="profile-name">Baal Predator 2</td>
+                      <td>3-5</td>
+                      <td>6"</td>
+                      <td>4+</td>
+                      <td>D3</td>
+                      <td></td>
+                    </tr>
+                    <tr>
+                      <td class="profile-name">Baal Predator 3</td>
+                      <td>1-2</td>
+                      <td>3"</td>
+                      <td>5+</td>
+                      <td>1</td>
+                      <td></td>
+                    </tr>
+                  </table>
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+      </ul>
+
+      <div class="summary">
+        <h2>Force Rules</h2>
+        <p>
+          <span class="bold">And They Shall Know No Fear:</span>
+          Each time a Combat Attrition test is taken for this unit, ignore any
+          or all modifiers ()
+        </p>
+        <p>
+          <span class="bold">Angels of Death:</span>
+          This unit has the following abilities: And They Shall Know No Fear,
+          Bolter Discipline, Shock Assault and Combat Doctrines. ()
+        </p>
+        <p>
+          <span class="bold">Bolter Discipline:</span>
+          Instead of following the normal rules for Rapid Fire weapons, models
+          in this unit shooting Rapid Fire bolt weapons make double the number
+          of attacks if any of the following apply<br />
+          <br />
+          - The shooting model's target is within half the weapon's range<br />
+          - The shooting model is Infantry (excluding Centurion models) and it's
+          unit Remained Stationary in your previous Movement Phase.<br />
+          - The shooting model is a Terminator or Biker<br />
+          <br />
+          For the purposes of this ability, a Rapid Fire bolt weapon is any bolt
+          weapon (see page 195) with the Rapid Fire type. ()
+        </p>
+        <p>
+          <span class="bold">Combat Doctrines:</span>
+          (See page 125 of Codex Space Marines) ()
+        </p>
+        <p>
+          <span class="bold">Shock Assault:</span>
+          Each time this unit fights if it made a charge move, was charged or
+          performed a Heroic Intervention this turn, then until that fight is
+          resolved, add 1 to the Attacks characteristic of models in this unit.
+          ()
+        </p>
+      </div>
+      <div class="summary">
+        <h2>Selection Rules</h2>
+        <p>
+          <span class="bold">Angels of Death:</span>
+          This unit has the following abilities: And They Shall Know No Fear,
+          Bolter Discipline, Shock Assault and Combat Doctrines. ()
+        </p>
+        <p>
+          <span class="bold">Combat Squads:</span>
+          Before any models are deployed at the start of the game, this unit
+          when containing its maximum number of models, may be split into two
+          units each containing an equal number of models. ()
+        </p>
+        <p>
+          <span class="bold">Death from Above:</span>
+          During deployment, if every model in this unit has this ability, then
+          you can set up this unit high in the skies instead of setting it up on
+          the battlefield. If you do, then in the Reinforcements step of one of
+          your Movement phases you can set up this unit anywhere on the
+          battlefield that is more than 9" away from enemy models. ()
+        </p>
+        <p>
+          <span class="bold">Savage Echoes:</span>
+          If every unit from your army (excluding UNALIGNED untis) has the BLOOD
+          ANGELS keyword, then every unit that has the Combat Doctrines ability
+          and is in a BLOOD ANGELS Detachment gains the Savage Echoes ability,
+          below.<br />
+          <br />
+          Whilst the Assault Doctrine is active, if a unit with this ability
+          makes a charge move, is charged or performs a Heroic Intervention, add
+          1 to the Attacks characteristic of models in that unit until the end
+          of the turn (note that this is cumulative with the bonus these models
+          receive from the Shock Assault ability). ()
+        </p>
+        <p>
+          <span class="bold">The Red Thirst:</span>
+          When resolving an attack made with a melee weapon by a model with this
+          ability in a turn in which that model&#8217;s unit made a charge move,
+          was charged or performed a Heroic Intervention, add 1 to the wound
+          roll. When a unit with this ability Advances or makes a charge move,
+          add 1 to the Advance roll or charge roll. ()
+        </p>
+      </div>
+      <br />
+      <p>
+        Created with <a href="https://www.battlescribe.net">BattleScribe</a>
+      </p>
+    </div>
+  </body>
+</html>
