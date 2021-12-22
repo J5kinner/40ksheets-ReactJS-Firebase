@@ -1,4 +1,4 @@
-import logo from "./assets/images/White-Warhammerlogo.webp";
+import logo from "./assets/images/White-Warhammerlogo.svg";
 import "./App.css";
 import "./assets/css/style.css";
 import FileUploader from "./components/FileUploader";

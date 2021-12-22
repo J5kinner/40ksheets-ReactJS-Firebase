@@ -1245,12 +1245,12 @@ function FileUploader() {
 
   const transform = async (e) => {
     e.preventDefault();
-    const blob = new Blob([selectFile.data], { type: "application/pdf" });
+    const blob = new Blob([selectFile.data], { type: "text/html" });
     const fileDownloadUrl = URL.createObjectURL(blob);
     console.log(blob);
     // console.log(selectFile.newFileName)
     setFile(
-      { fileDownloaderURL: fileDownloadUrl, newFileName: "40kBeautified.pdf" },
+      { fileDownloaderURL: fileDownloadUrl, newFileName: "40kBeautified.html" },
 
       console.log("Download file " + selectFile.newFileName),
       () => {
@@ -1263,14 +1263,14 @@ function FileUploader() {
 
   const transform2Col = async (e) => {
     e.preventDefault();
-    const blob = new Blob([selectFile.data], { type: "application/pdf" });
+    const blob = new Blob([selectFile.data], { type: "text/html" });
     const fileDownloadUrl = URL.createObjectURL(blob);
     console.log(blob);
     // console.log(selectFile.newFileName)
     setFile(
       {
         fileDownloaderURL: fileDownloadUrl,
-        newFileName: "40kBeautified2Col.pdf",
+        newFileName: "40kBeautified2Col.html",
       },
 
       console.log("Download file " + selectFile.newFileName),
