@@ -1,5 +1,6 @@
 {
   "hosting": {
+    "site": "anti-heresy-sheets",    
     "public": "build",
     "ignore": [
       "firebase.json",
