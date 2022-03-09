@@ -1,12 +1,14 @@
-import React, { useState } from "react";
+import React, { useState, useEffect} from "react";
 import singleColumnImg from "../assets/images/singleCol.webp";
 import doubleColumnImg from "../assets/images/doubleCol.webp";
 import Preview from "./Preview";
 import "../assets/css/style.css";
 
+
 function FileUploader() {
   let htmlData;
   const defaultFileType = "html";
+  let fileInput = React.createRef();
 
   const [selectFile, setFile] = useState({
     fileType: defaultFileType,
@@ -16,22 +18,32 @@ function FileUploader() {
     data: "",
   });
 
+
+
+
   /*
    * showFile and show2ColFile remove and replace the style tag 
    * found in the uploaded HTML file.
    * 
-   * @return The replaced style is the the corresponding code for either 1 column or 2
+   * @Return The replaced style is the the corresponding code for either 1 column or 2
    */
 
   const showFile = async (e) => {
     e.preventDefault();
+    // const {rememberFName} = this.state;
+    // localStorage.setItem('rememberFName', rememberFName);
 
     const reader = new FileReader();
-    reader.onload = async (e) => {
-      const textSave = e.target.result;
-      htmlData = textSave;
-      // console.log(htmlData);
+    reader.fileName = e.name;
+    reader.onload = async (fileEvent) => {
+      console.log(fileInput.current.files[0].name);
 
+      setFile({newFileName: fileInput.current.files[0].name})
+
+      const textSave = fileEvent.target.result;
+      htmlData = textSave;
+       //console.log(htmlData);
+       
       htmlData = textSave.replace(
         /(<style[\w\W]+style>)/g,
         `    <style>
@@ -1260,9 +1272,10 @@ function FileUploader() {
   const transform = async (e) => {
     e.preventDefault();
     const blob = new Blob([selectFile.data], { type: "text/html" });
+    console.log(selectFile.data);
     const fileDownloadUrl = URL.createObjectURL(blob);
     console.log(blob);
-    // console.log(selectFile.newFileName)
+     console.log(selectFile.newFileName)
     setFile(
       { fileDownloaderURL: fileDownloadUrl, newFileName: "40kBeautified.html" },
 
@@ -1309,7 +1322,7 @@ function FileUploader() {
       <div className="upload-type">
         <Preview title="Single Column" image={singleColumnImg} />
         <label for="file1">Choose a HTML File</label>
-        <input id="file1" type="file" name="file" onChange={showFile} accept=".html" />
+        <input id="file1" type="file" ref={fileInput} onChange={showFile} accept=".html" />
 
         {selectFile.newFileName === "40kBeautified.html" ? (
           <a
