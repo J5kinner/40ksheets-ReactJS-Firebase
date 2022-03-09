@@ -35,10 +35,14 @@ Your app is ready to be deployed!
 
 See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
 
-### Deployment
+### Deployment Steps
 
 Deployment is handled by Google's Firebase and is hosted on [https://warhammer40k-sheets.web.app/](https://warhammer40k-sheets.web.app/)
 
-### `npm run build` fails to minify
+### 1. `npm run build` 
 
-You'll need to run the build before deploying if you want the current environment to be deployed to firebase
+Builds the project for production 
+
+### 2. `firebase deploy`
+
+Hosts the build files to firebase and your site is now live! 🎉
