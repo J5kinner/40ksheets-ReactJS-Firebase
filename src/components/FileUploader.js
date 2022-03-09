@@ -15,6 +15,7 @@ function FileUploader() {
     fileDownloaderURL: null,
     status: "",
     newFileName: "",
+    oldFileName: fileInput,
     data: "",
   });
 
@@ -36,10 +37,9 @@ function FileUploader() {
     const reader = new FileReader();
     reader.fileName = e.name;
     reader.onload = async (fileEvent) => {
-      console.log(fileInput.current.files[0].name);
-
-      setFile({newFileName: fileInput.current.files[0].name})
-
+      const fName = fileInput.current.files[0].name
+      localStorage.setItem('fName', fName);
+      console.log(fName);
       const textSave = fileEvent.target.result;
       htmlData = textSave;
        //console.log(htmlData);
@@ -1275,9 +1275,13 @@ function FileUploader() {
     console.log(selectFile.data);
     const fileDownloadUrl = URL.createObjectURL(blob);
     console.log(blob);
-     console.log(selectFile.newFileName)
+     console.log("The file name is " + selectFile.oldFileName);
+
+     const userfileName = localStorage.getItem('fName');
+     console.log("local storage is " + userfileName);
+
     setFile(
-      { fileDownloaderURL: fileDownloadUrl, newFileName: "40kBeautified.html" },
+      { fileDownloaderURL: fileDownloadUrl, newFileName: userfileName },
 
       console.log("Download file " + selectFile.newFileName),
       () => {
@@ -1324,7 +1328,7 @@ function FileUploader() {
         <label for="file1">Choose a HTML File</label>
         <input id="file1" type="file" ref={fileInput} onChange={showFile} accept=".html" />
 
-        {selectFile.newFileName === "40kBeautified.html" ? (
+        {selectFile.newFileName ? (
           <a
             className="download"
             download={selectFile.newFileName}
