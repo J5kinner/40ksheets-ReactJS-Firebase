@@ -9,13 +9,13 @@ function FileUploader() {
   let htmlData;
   const defaultFileType = "html";
   let fileInput = React.createRef();
+  let fileInput2 = React.createRef();
 
   const [selectFile, setFile] = useState({
     fileType: defaultFileType,
     fileDownloaderURL: null,
     status: "",
     newFileName: "",
-    oldFileName: fileInput,
     data: "",
   });
 
@@ -39,7 +39,6 @@ function FileUploader() {
     reader.onload = async (fileEvent) => {
       const fName = fileInput.current.files[0].name
       localStorage.setItem('fName', fName);
-      console.log(fName);
       const textSave = fileEvent.target.result;
       htmlData = textSave;
        //console.log(htmlData);
@@ -774,6 +773,8 @@ function FileUploader() {
     e.preventDefault();
     const reader = new FileReader();
     reader.onload = async (e) => {
+      const fName2 = fileInput2.current.files[0].name
+      localStorage.setItem('fName2', fName2);
       const textSave = e.target.result;
       htmlData = textSave;
       htmlData = textSave.replace(
@@ -1272,18 +1273,10 @@ function FileUploader() {
   const transform = async (e) => {
     e.preventDefault();
     const blob = new Blob([selectFile.data], { type: "text/html" });
-    console.log(selectFile.data);
     const fileDownloadUrl = URL.createObjectURL(blob);
-    console.log(blob);
-     console.log("The file name is " + selectFile.oldFileName);
-
-     const userfileName = localStorage.getItem('fName');
-     console.log("local storage is " + userfileName);
-
+     const userFName = localStorage.getItem('fName');
     setFile(
-      { fileDownloaderURL: fileDownloadUrl, newFileName: userfileName },
-
-      console.log("Download file " + selectFile.newFileName),
+      { fileDownloaderURL: fileDownloadUrl, newFileName: userFName },
       () => {
         selectFile.dofileDownload.click();
         URL.revokeObjectURL(fileDownloadUrl); // free up storage--no longer needed.
@@ -1296,15 +1289,12 @@ function FileUploader() {
     e.preventDefault();
     const blob = new Blob([selectFile.data], { type: "text/html" });
     const fileDownloadUrl = URL.createObjectURL(blob);
-    console.log(blob);
-    // console.log(selectFile.newFileName)
+    const userFName = localStorage.getItem('fName2');
     setFile(
       {
         fileDownloaderURL: fileDownloadUrl,
-        newFileName: "40kBeautified2Col.html",
+        newFileName: userFName,
       },
-
-      console.log("Download file " + selectFile.newFileName),
       () => {
         selectFile.dofileDownload.click();
         URL.revokeObjectURL(fileDownloadUrl); // free up storage--no longer needed.
@@ -1347,9 +1337,9 @@ function FileUploader() {
       <div className="upload-type">
         <Preview title="Double Column" image={doubleColumnImg} />
         <label for="file2">Choose a HTML File</label>
-        <input id="file2" type="file" name="file" onChange={show2ColFile} accept=".html" />
+        <input id="file2" type="file" ref={fileInput2} onChange={show2ColFile} accept=".html" />
 
-        {selectFile.newFileName === "40kBeautified2Col.html" ? (
+        {selectFile.newFileName ? (
           <a
             className="download"
             download={selectFile.newFileName}
