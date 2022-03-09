@@ -1,12 +1,15 @@
-import React, { useState } from "react";
+import React, { useState, useEffect} from "react";
 import singleColumnImg from "../assets/images/singleCol.webp";
 import doubleColumnImg from "../assets/images/doubleCol.webp";
 import Preview from "./Preview";
 import "../assets/css/style.css";
 
+
 function FileUploader() {
   let htmlData;
   const defaultFileType = "html";
+  let fileInput = React.createRef();
+  let fileInput2 = React.createRef();
 
   const [selectFile, setFile] = useState({
     fileType: defaultFileType,
@@ -16,22 +19,30 @@ function FileUploader() {
     data: "",
   });
 
+
+
+
   /*
    * showFile and show2ColFile remove and replace the style tag 
    * found in the uploaded HTML file.
    * 
-   * @return The replaced style is the the corresponding code for either 1 column or 2
+   * @Return The replaced style is the the corresponding code for either 1 column or 2
    */
 
   const showFile = async (e) => {
     e.preventDefault();
+    // const {rememberFName} = this.state;
+    // localStorage.setItem('rememberFName', rememberFName);
 
     const reader = new FileReader();
-    reader.onload = async (e) => {
-      const textSave = e.target.result;
+    reader.fileName = e.name;
+    reader.onload = async (fileEvent) => {
+      const fName = fileInput.current.files[0].name
+      localStorage.setItem('fName', fName);
+      const textSave = fileEvent.target.result;
       htmlData = textSave;
-      // console.log(htmlData);
-
+       //console.log(htmlData);
+       
       htmlData = textSave.replace(
         /(<style[\w\W]+style>)/g,
         `    <style>
@@ -762,6 +773,8 @@ function FileUploader() {
     e.preventDefault();
     const reader = new FileReader();
     reader.onload = async (e) => {
+      const fName2 = fileInput2.current.files[0].name
+      localStorage.setItem('fName2', fName2);
       const textSave = e.target.result;
       htmlData = textSave;
       htmlData = textSave.replace(
@@ -1261,12 +1274,9 @@ function FileUploader() {
     e.preventDefault();
     const blob = new Blob([selectFile.data], { type: "text/html" });
     const fileDownloadUrl = URL.createObjectURL(blob);
-    console.log(blob);
-    // console.log(selectFile.newFileName)
+     const userFName = localStorage.getItem('fName');
     setFile(
-      { fileDownloaderURL: fileDownloadUrl, newFileName: "40kBeautified.html" },
-
-      console.log("Download file " + selectFile.newFileName),
+      { fileDownloaderURL: fileDownloadUrl, newFileName: userFName },
       () => {
         selectFile.dofileDownload.click();
         URL.revokeObjectURL(fileDownloadUrl); // free up storage--no longer needed.
@@ -1279,15 +1289,12 @@ function FileUploader() {
     e.preventDefault();
     const blob = new Blob([selectFile.data], { type: "text/html" });
     const fileDownloadUrl = URL.createObjectURL(blob);
-    console.log(blob);
-    // console.log(selectFile.newFileName)
+    const userFName = localStorage.getItem('fName2');
     setFile(
       {
         fileDownloaderURL: fileDownloadUrl,
-        newFileName: "40kBeautified2Col.html",
+        newFileName: userFName,
       },
-
-      console.log("Download file " + selectFile.newFileName),
       () => {
         selectFile.dofileDownload.click();
         URL.revokeObjectURL(fileDownloadUrl); // free up storage--no longer needed.
@@ -1309,9 +1316,9 @@ function FileUploader() {
       <div className="upload-type">
         <Preview title="Single Column" image={singleColumnImg} />
         <label for="file1">Choose a HTML File</label>
-        <input id="file1" type="file" name="file" onChange={showFile} accept=".html" />
+        <input id="file1" type="file" ref={fileInput} onChange={showFile} accept=".html" />
 
-        {selectFile.newFileName === "40kBeautified.html" ? (
+        {selectFile.newFileName ? (
           <a
             className="download"
             download={selectFile.newFileName}
@@ -1330,9 +1337,9 @@ function FileUploader() {
       <div className="upload-type">
         <Preview title="Double Column" image={doubleColumnImg} />
         <label for="file2">Choose a HTML File</label>
-        <input id="file2" type="file" name="file" onChange={show2ColFile} accept=".html" />
+        <input id="file2" type="file" ref={fileInput2} onChange={show2ColFile} accept=".html" />
 
-        {selectFile.newFileName === "40kBeautified2Col.html" ? (
+        {selectFile.newFileName ? (
           <a
             className="download"
             download={selectFile.newFileName}
