@@ -1,0 +1,75 @@
+@media only print {
+    div.battlescribe div.summary {
+     width: 100%;
+     max-width: 650px;
+     margin-left: auto;
+     margin-right: auto;
+     margin-bottom: 0px;
+   }
+
+   div.battlescribe li.force {
+     margin-right: auto;
+     margin-left: auto;
+     width: 100%;
+     max-width: 650px;
+   }
+
+   div.battlescribe {
+     font-size: 12px;
+   }
+
+   div.battlescribe h1 {
+     font-size: 28px;
+   }
+
+   div.battlescribe p {
+     font-size: 12px;
+   }
+
+   div.battlescribe table {
+     font-size: 12px;
+   }
+
+   div.battlescribe h4 {
+     font-size: 16px;
+   }
+
+   div.battlescribe li.rootselection {
+     margin-bottom: 0px;
+   }
+
+   div.battlescribe h2 {
+     font-size: 25px;
+   }
+
+   div.battlescribe h1 {
+     width: 100%;
+     max-width: 650px;
+     margin-left: auto;
+     margin-right: auto;
+   }
+
+   th {
+     padding: 4px;
+   }
+
+   td {
+     padding: 4px;
+   }
+
+   th:first-of-type {
+     padding-left: 16px;
+   }
+
+   th:last-of-type {
+     padding-right: 16px;
+   }
+
+   td:first-of-type {
+     padding-left: 16px;
+   }
+
+   td:last-of-type {
+     padding-right: 16px;
+   }
+ }
