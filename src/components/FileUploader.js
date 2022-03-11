@@ -31,9 +31,6 @@ function FileUploader() {
 
   const showFile = async (e) => {
     e.preventDefault();
-    // const {rememberFName} = this.state;
-    // localStorage.setItem('rememberFName', rememberFName);
-
     const reader = new FileReader();
     reader.fileName = e.name;
     reader.onload = async (fileEvent) => {
@@ -42,7 +39,6 @@ function FileUploader() {
       const textSave = fileEvent.target.result;
       htmlData = textSave;
        //console.log(htmlData);
-       
       htmlData = textSave.replace(
         /(<style[\w\W]+style>)/g,
         `<style>
@@ -1354,6 +1350,11 @@ br+p {
           </button>
         )}
       </div>
+      <label for="fileType">Choose Layout Type:</label>
+      <select name="files" id="dataTypes">
+      <option value="file1">Single Column</option>
+      <option value="file2">Double Column</option>
+</select>
     </div>
   );
 }
