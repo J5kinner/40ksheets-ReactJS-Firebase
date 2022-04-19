@@ -1,9 +1,8 @@
-import React, { useState, useEffect} from "react";
+import React, { useState, useEffect } from "react";
 import singleColumnImg from "../assets/images/singleCol.webp";
 import doubleColumnImg from "../assets/images/doubleCol.webp";
 import Preview from "./Preview";
 import "../assets/css/style.css";
-
 
 function FileUploader() {
   let htmlData;
@@ -19,13 +18,10 @@ function FileUploader() {
     data: "",
   });
 
-
-
-
   /*
-   * showFile and show2ColFile remove and replace the style tag 
+   * showFile and show2ColFile remove and replace the style tag
    * found in the uploaded HTML file.
-   * 
+   *
    * @Return The replaced style is the the corresponding code for either 1 column or 2
    */
 
@@ -34,11 +30,11 @@ function FileUploader() {
     const reader = new FileReader();
     reader.fileName = e.name;
     reader.onload = async (fileEvent) => {
-      const fName = fileInput.current.files[0].name
-      localStorage.setItem('fName', fName);
+      const fName = fileInput.current.files[0].name;
+      localStorage.setItem("fName", fName);
       const textSave = fileEvent.target.result;
       htmlData = textSave;
-       //console.log(htmlData);
+      //console.log(htmlData);
       htmlData = textSave.replace(
         /(<style[\w\W]+style>)/g,
         `<style>
@@ -769,8 +765,8 @@ br+p {
     e.preventDefault();
     const reader = new FileReader();
     reader.onload = async (e) => {
-      const fName2 = fileInput2.current.files[0].name
-      localStorage.setItem('fName2', fName2);
+      const fName2 = fileInput2.current.files[0].name;
+      localStorage.setItem("fName2", fName2);
       const textSave = e.target.result;
       htmlData = textSave;
       htmlData = textSave.replace(
@@ -1262,7 +1258,7 @@ br+p {
   /*
    * The transform and transform2Col take the htmlData stored in selectFile state
    * and creates a blob for the new HTML file we are going to return to the user.
-   * 
+   *
    * @return blob containing the new HTML file which looks prettier.
    */
 
@@ -1270,7 +1266,7 @@ br+p {
     e.preventDefault();
     const blob = new Blob([selectFile.data], { type: "text/html" });
     const fileDownloadUrl = URL.createObjectURL(blob);
-     const userFName = localStorage.getItem('fName');
+    const userFName = localStorage.getItem("fName");
     setFile(
       { fileDownloaderURL: fileDownloadUrl, newFileName: userFName },
       () => {
@@ -1285,7 +1281,7 @@ br+p {
     e.preventDefault();
     const blob = new Blob([selectFile.data], { type: "text/html" });
     const fileDownloadUrl = URL.createObjectURL(blob);
-    const userFName = localStorage.getItem('fName2');
+    const userFName = localStorage.getItem("fName2");
     setFile(
       {
         fileDownloaderURL: fileDownloadUrl,
@@ -1300,9 +1296,9 @@ br+p {
   };
 
   /*
-   * So the user will need to press the conversion button twice to activate either of the 
+   * So the user will need to press the conversion button twice to activate either of the
    * 2 functions above.
-   * 
+   *
    * 1. first retrieve the uploaded file and replace the current style with the new style.
    * 2. Then create a blob with the new HTML file so that the user can download it.
    */
@@ -1311,8 +1307,19 @@ br+p {
     <div className="upload-container">
       <div className="upload-type">
         <Preview title="Single Column" image={singleColumnImg} />
-        <label for="file1">Choose a HTML File</label>
-        <input id="file1" type="file" ref={fileInput} onChange={showFile} accept=".html" />
+        
+        <label for="colType">Choose a Layout</label>
+        <select name="colType" id="columns">
+          <option value="file1">Single Column</option>
+          <option value="file2">Double Column</option>
+        </select>
+        <input
+          id="file1"
+          type="file"
+          ref={fileInput}
+          onChange={showFile}
+          accept=".html"
+        />
 
         {selectFile.newFileName ? (
           <a
@@ -1333,7 +1340,13 @@ br+p {
       <div className="upload-type">
         <Preview title="Double Column" image={doubleColumnImg} />
         <label for="file2">Choose a HTML File</label>
-        <input id="file2" type="file" ref={fileInput2} onChange={show2ColFile} accept=".html" />
+        <input
+          id="file2"
+          type="file"
+          ref={fileInput2}
+          onChange={show2ColFile}
+          accept=".html"
+        />
 
         {selectFile.newFileName ? (
           <a
@@ -1350,11 +1363,6 @@ br+p {
           </button>
         )}
       </div>
-      <label for="fileType">Choose Layout Type:</label>
-      <select name="files" id="dataTypes">
-      <option value="file1">Single Column</option>
-      <option value="file2">Double Column</option>
-</select>
     </div>
   );
 }
