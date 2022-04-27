@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import singleColumnImg from "../assets/images/singleCol.webp";
 import doubleColumnImg from "../assets/images/doubleCol.webp";
 import Preview from "./Preview";
