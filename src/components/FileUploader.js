@@ -7,7 +7,7 @@ import "../assets/css/style.css";
 function FileUploader() {
   let htmlData;
   const defaultFileType = "html";
-  let fileInput = React.createRef();
+  let fileInput = React.createRef(); //how to remember the name of the files 
   let fileInput2 = React.createRef();
 
   const [selectFile, setFile] = useState({
