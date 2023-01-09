@@ -10,6 +10,12 @@ function FileUploader() {
   const defaultFileType = "html";
   let fileInput = React.createRef();
   let fileInput2 = React.createRef();
+  const [radioValue, setRadioValue] = useState("2");
+  console.log(radioValue);
+  const radios = [
+    { name: "Single Column", value: "1" },
+    { name: "Double Column", value: "2" },
+  ];
 
   const [selectFile, setFile] = useState({
     fileType: defaultFileType,
@@ -26,7 +32,7 @@ function FileUploader() {
    * @Return The replaced style is the the corresponding code for either 1 column or 2
    */
 
-  const showFile = async (e) => {
+  const show1ColFile = async (e) => {
     e.preventDefault();
     // const {rememberFName} = this.state;
     // localStorage.setItem('rememberFName', rememberFName);
@@ -1300,6 +1306,17 @@ br+p {
     );
   };
 
+  let imageContent;
+  let formContent;
+
+  if (radioValue === "1") {
+    imageContent = <Preview title="Single Column" image={singleColumnImg} />;
+    formContent = <p>Display form 1</p>;
+  } else {
+    imageContent = <Preview title="Double Column" image={doubleColumnImg} />;
+    formContent = <p>display column 2 forms</p>;
+  }
+
   /*
    * So the user will need to press the conversion button twice to activate either of the
    * 2 functions above.
@@ -1311,19 +1328,25 @@ br+p {
   return (
     <div className="upload-container">
       <div className="upload-type">
-        <Preview title="Single Column" image={singleColumnImg} />
+        {/* <Preview title="Single Column" image={singleColumnImg} /> */}
+        {imageContent}
+
         <label for="file1">Choose a HTML File</label>
         <div>
-          <Dropdown/>
+          <Dropdown
+            radioValue={radioValue}
+            radios={radios}
+            onChange={(e) => setRadioValue(e.currentTarget.value)}
+          />
         </div>
-        <input
-          id="file1"
+        {/* <input
+          id="file"
           type="file"
           ref={fileInput}
-          onChange={showFile}
+          onChange={show1ColFile}
           accept=".html"
         />
-       
+
         {selectFile.newFileName ? (
           <a
             className="download"
@@ -1337,10 +1360,12 @@ br+p {
           <button className="glow-on-hover" onClick={transform}>
             Transform
           </button>
-        )}
+        )} */}
       </div>
       <br />
-      <div className="upload-type">
+      {formContent}
+
+      {/* <div className="upload-type">
         <Preview title="Double Column" image={doubleColumnImg} />
         <label for="file2">Choose a HTML File</label>
         <input
@@ -1365,7 +1390,7 @@ br+p {
             Transform
           </button>
         )}
-      </div>
+      </div> */}
     </div>
   );
 }
