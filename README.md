@@ -37,7 +37,7 @@ See the section about [deployment](https://facebook.github.io/create-react-app/d
 
 ### Deployment Steps
 
-Deployment is handled by Google's Firebase and is hosted on [https://warhammer40k-sheets.web.app/](https://warhammer40k-sheets.web.app/)
+Deployment is handled by Google's Firebase and is hosted on [https://warhammer40k-sheets.web.app/](https://anti-heresy-sheets.web.app/)
 
 ### 1. `npm run build` 
 
