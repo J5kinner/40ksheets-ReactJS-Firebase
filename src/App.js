@@ -24,8 +24,8 @@ function App() {
           colours
         </p>
         <p>Then save the HTML file as a PDF then print 😄</p>
+        <p>You may need to refresh the page if building single and double columns at the same time</p>
       </div>
-
       <div className="footer">
         <CookieConsent
           debug={false}

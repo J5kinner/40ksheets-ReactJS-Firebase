@@ -6,15 +6,17 @@ import "../assets/css/style.css";
 import SheetStyleSelectorButtons from "./SheetStyleSelectorButtons";
 import singleCol from "../assets/sheetStyle/singleCol.js";
 import doubleCol from "../assets/sheetStyle/doubleCol.js";
+import Form from "react-bootstrap/Form";
 
 function FileUploader() {
   let htmlData;
   const defaultFileType = "html";
   let fileInput = React.createRef("");
+  let fileInput2 = React.createRef("");
   let imageContent;
   let formContent;
   const [radioValue, setRadioValue] = useState("2");
-  console.log(radioValue);
+  // console.log(radioValue);
   const radios = [
     { name: "Single Column", value: "1" },
     { name: "Double Column", value: "2" },
@@ -55,7 +57,7 @@ function FileUploader() {
     e.preventDefault();
     const reader = new FileReader();
     reader.onload = async (e) => {
-      const fName2 = fileInput.current.files[0].name;
+      const fName2 = fileInput2.current.files[0].name;
       localStorage.setItem("fName2", fName2);
       const textSave = e.target.result;
       htmlData = textSave;
@@ -113,15 +115,24 @@ function FileUploader() {
       </div>
     );
     formContent = (
-      <div className="upload-type">
-        <label for="file">Choose a HTML File</label>
-        <input
-          id="file"
-          type="file"
-          ref={fileInput}
-          onChange={show1ColFile}
-          accept=".html"
-        />
+      <div className="sheet-type">
+        <Form.Group className="mb-3">
+          <Form.Control
+            id="file"
+            type="file"
+            size="lg"
+            ref={fileInput}
+            onChange={show1ColFile}
+            accept=".html"
+          />
+        </Form.Group>
+        {/* <Form.Label htmlFor="colorInput">Color picker</Form.Label>
+        <Form.Control
+          type="color"
+          id="colorInput"
+          defaultValue="#563d7c"
+          title="Choose your color"
+        /> */}
 
         {selectFile.newFileName ? (
           <a
@@ -146,15 +157,17 @@ function FileUploader() {
       </div>
     );
     formContent = (
-      <div className="upload-type">
-        <label for="file2">Choose a HTML File</label>
-        <input
-          id="file2"
-          type="file"
-          ref={fileInput}
-          onChange={show2ColFile}
-          accept=".html"
-        />
+      <div className="sheet-type">
+        <Form.Group className="mb-3">
+          <Form.Control
+            id="file2"
+            type="file"
+            size="lg"
+            ref={fileInput2}
+            onChange={show2ColFile}
+            accept=".html"
+          />
+        </Form.Group>
 
         {selectFile.newFileName ? (
           <a
@@ -186,13 +199,11 @@ function FileUploader() {
     <div className="upload-container">
       <div className="upload-type">
         {imageContent}
-        <div>
-          <SheetStyleSelectorButtons
-            radioValue={radioValue}
-            radios={radios}
-            onChange={(e) => setRadioValue(e.currentTarget.value)}
-          />
-        </div>
+        <SheetStyleSelectorButtons
+          radioValue={radioValue}
+          radios={radios}
+          onChange={(e) => setRadioValue(e.currentTarget.value)}
+        />
         {formContent}
       </div>
       <br />

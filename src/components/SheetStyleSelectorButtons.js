@@ -5,13 +5,14 @@ import ToggleButton from "react-bootstrap/ToggleButton";
 function SheetStyleSelectorButtons({ radioValue, onChange, radios }) {
   return (
     <>
+    <div className="sheet-type">
       <ButtonGroup>
         {radios.map((radio, idx) => (
           <ToggleButton
             key={idx}
             id={`radio-${idx}`}
             type="radio"
-            variant={idx % 2 ? "outline-success" : "outline-primary"}
+            variant={idx % 2 ? "outline-primary" : "outline-light"}
             name="radio"
             value={radio.value}
             checked={radioValue === radio.value}
@@ -21,6 +22,7 @@ function SheetStyleSelectorButtons({ radioValue, onChange, radios }) {
           </ToggleButton>
         ))}
       </ButtonGroup>
+      </div>
     </>
   );
 }
