@@ -2,7 +2,7 @@ import React from "react";
 import ButtonGroup from "react-bootstrap/ButtonGroup";
 import ToggleButton from "react-bootstrap/ToggleButton";
 
-function DropDown({ radioValue, onChange, radios }) {
+function SheetStyleSelectorButtons({ radioValue, onChange, radios }) {
   return (
     <>
       <ButtonGroup>
@@ -25,4 +25,4 @@ function DropDown({ radioValue, onChange, radios }) {
   );
 }
 
-export default DropDown;
+export default SheetStyleSelectorButtons;
