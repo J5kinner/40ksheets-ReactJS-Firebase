@@ -9,28 +9,35 @@ function App() {
     <div className="App">
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
-        <div className="main-section">
-          <p>Instructions:</p>
-          <p>1. Download HTML file from battlescribe</p>
-          <p>2. Upload your HTML file to which style you prefer</p>
-          <FileUploader />
-          <p>
-            <strong>When Printing</strong>: Remember to{" "}
-            <i>add background graphics</i> OR <i>print background</i> to get
-            colours
-          </p>
-          <p>Then save the HTML file as a PDF then print 😄</p>
-        </div>
+        <ol>
+          <strong>Steps:</strong>
+          <li> Download HTML file from Battlescribe</li>
+          <li> Choose preferred styling (Double or Single Column)</li>
+          <li> Upload HTML file and transform the data sheet 🎉</li>
+        </ol>
       </header>
+      <div className="main-section">
+        <FileUploader />
+        <p>
+          <strong>When Printing</strong>: Remember to{" "}
+          <i>add background graphics</i> OR <i>print background</i> to get
+          colours
+        </p>
+        <p>Then save the HTML file as a PDF then print 😄</p>
+        <p>You may need to refresh the page if building single and double columns at the same time</p>
+      </div>
       <div className="footer">
         <CookieConsent
-          debug={true}
+          debug={false}
           location="bottom"
           style={{ background: "#000", textAlign: "left" }}
-          buttonStyle={{ color: "#000", background: "#fff", fontSize: "14px" }}
+          buttonStyle={{ color: "#000", background: "#fff", fontSize: "12px" }}
           expires={365}
         >
-          This site uses cookies. See our <a target="blank" href={process.env.PUBLIC_URL + "Privacy.html"}>privacy policy</a>{" "}
+          This site uses cookies. See our{" "}
+          <a target="blank" href={process.env.PUBLIC_URL + "Privacy.html"}>
+            privacy policy
+          </a>{" "}
           for more.{" "}
         </CookieConsent>
         <footer>

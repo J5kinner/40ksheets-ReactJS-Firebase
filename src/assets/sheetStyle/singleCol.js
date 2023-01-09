@@ -1,4 +1,4 @@
-
+const singleCol = `<style>
 @import url("https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700;900&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Open+Sans&family=Roboto:wght@400;500;700;900&display=swap");
 
@@ -715,3 +715,5 @@ div.battlescribe span.caps {
 br+p {
   display: none;
 }
+      </style>`;
+export default singleCol;
