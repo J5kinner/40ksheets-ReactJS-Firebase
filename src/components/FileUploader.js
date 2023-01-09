@@ -28,10 +28,6 @@ function FileUploader() {
     data: "",
   });
 
-  const resetFileInput = () => {
-    fileInput.current.files[0].name = null;
-  };
-
   /*
    * showFile and show2ColFile remove and replace the style tag
    * found in the uploaded HTML file.

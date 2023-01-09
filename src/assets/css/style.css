@@ -1,6 +1,11 @@
 .main-section {
   display: flex;
   flex-direction: column;
+  background-color: #282c34;
+  color: white;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
 }
 
 .upload-type {
@@ -51,6 +56,7 @@ p {
   margin: 0px;
   padding: 1em;
   color: white;
+  text-align: center;
 }
 
 .footer-a {

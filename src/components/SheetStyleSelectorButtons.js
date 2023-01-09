@@ -11,7 +11,7 @@ function SheetStyleSelectorButtons({ radioValue, onChange, radios }) {
             key={idx}
             id={`radio-${idx}`}
             type="radio"
-            variant={idx % 2 ? "outline-success" : "outline-danger"}
+            variant={idx % 2 ? "outline-success" : "outline-primary"}
             name="radio"
             value={radio.value}
             checked={radioValue === radio.value}

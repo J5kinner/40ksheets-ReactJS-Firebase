@@ -5,7 +5,7 @@ function Preview({ title, image }) {
     <div className="preview-container">
       <div className="single">
         <h1>{title}</h1>
-        <img className="example-sheet" src={image} alt="singular column example" />
+        <img className="example-sheet" src={image} alt="Column design exemplar" />
       </div>
     </div>
   );
