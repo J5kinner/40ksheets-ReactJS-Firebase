@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import singleColumnImg from "../assets/images/singleCol.webp";
 import doubleColumnImg from "../assets/images/doubleCol.webp";
 import Preview from "./Preview";
@@ -10,13 +10,13 @@ import Form from "react-bootstrap/Form";
 
 function FileUploader() {
   let htmlData;
-  const defaultFileType = "html";
   let fileInput = React.createRef("");
   let fileInput2 = React.createRef("");
   let imageContent;
   let formContent;
-  const [radioValue, setRadioValue] = useState("2");
-  // console.log(radioValue);
+  const fileName = "fName";
+  const defaultFileType = "html";
+  const [radioValue, setRadioValue] = useState("2"); //default 2 column because it seems to be popular
   const radios = [
     { name: "Single Column", value: "1" },
     { name: "Double Column", value: "2" },
@@ -30,6 +30,9 @@ function FileUploader() {
     data: "",
   });
 
+
+
+  
   /*
    * showFile and show2ColFile remove and replace the style tag
    * found in the uploaded HTML file.
@@ -57,8 +60,8 @@ function FileUploader() {
     e.preventDefault();
     const reader = new FileReader();
     reader.onload = async (e) => {
-      const fName2 = fileInput2.current.files[0].name;
-      localStorage.setItem("fName2", fName2);
+      const fName = fileInput2.current.files[0].name;
+      localStorage.setItem("fName", fName);
       const textSave = e.target.result;
       htmlData = textSave;
       htmlData = textSave.replace(/(<style[\w\W]+style>)/g, doubleCol);
@@ -79,7 +82,7 @@ function FileUploader() {
     e.preventDefault();
     const blob = new Blob([selectFile.data], { type: "text/html" });
     const fileDownloadUrl = URL.createObjectURL(blob);
-    const userFName = localStorage.getItem("fName");
+    const userFName = localStorage.getItem(fileName);
     setFile(
       { fileDownloaderURL: fileDownloadUrl, newFileName: userFName },
       () => {
@@ -90,23 +93,23 @@ function FileUploader() {
     );
   };
 
-  const transform2Col = async (e) => {
-    e.preventDefault();
-    const blob = new Blob([selectFile.data], { type: "text/html" });
-    const fileDownloadUrl = URL.createObjectURL(blob);
-    const userFName = localStorage.getItem("fName2");
-    setFile(
-      {
-        fileDownloaderURL: fileDownloadUrl,
-        newFileName: userFName,
-      },
-      () => {
-        selectFile.dofileDownload.click();
-        URL.revokeObjectURL(fileDownloadUrl); // free up storage--no longer needed.
-        setFile({ fileDownloadUrl: "" });
-      }
-    );
-  };
+  // const transform2Col = async (e) => {
+  //   e.preventDefault();
+  //   const blob = new Blob([selectFile.data], { type: "text/html" });
+  //   const fileDownloadUrl = URL.createObjectURL(blob);
+  //   const userFName = sessionStorage.getItem("fName2");
+  //   setFile(
+  //     {
+  //       fileDownloaderURL: fileDownloadUrl,
+  //       newFileName: userFName,
+  //     },
+  //     () => {
+  //       selectFile.dofileDownload.click();
+  //       URL.revokeObjectURL(fileDownloadUrl); // free up storage--no longer needed.
+  //       setFile({ fileDownloadUrl: "" });
+  //     }
+  //   );
+  // };
 
   if (radioValue === "1") {
     imageContent = (
@@ -179,7 +182,7 @@ function FileUploader() {
             Download it
           </a>
         ) : (
-          <button className="glow-on-hover" onClick={transform2Col}>
+          <button className="glow-on-hover" onClick={transform}>
             Transform
           </button>
         )}
