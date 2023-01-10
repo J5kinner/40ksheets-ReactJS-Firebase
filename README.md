@@ -35,6 +35,12 @@ Your app is ready to be deployed!
 
 See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
 
+### How to Update the app
+Using npm-check-updates, do the following:
+`npm i -g npm-check-updates`
+`ncu -u`
+`npm install`
+
 ### Deployment Steps
 
 Deployment is handled by Google's Firebase and is hosted on [https://anti-heresy-sheets.web.app/](https://anti-heresy-sheets.web.app/)
