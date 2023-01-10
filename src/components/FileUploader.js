@@ -7,16 +7,16 @@ import SheetStyleSelectorButtons from "./SheetStyleSelectorButtons";
 import singleCol from "../assets/sheetStyle/singleCol.js";
 import doubleCol from "../assets/sheetStyle/doubleCol.js";
 import Form from "react-bootstrap/Form";
+import MemoryStorage from "memorystorage";
 
 function FileUploader() {
   let htmlData;
-  const defaultFileType = "html";
-  let fileInput = React.createRef("");
-  let fileInput2 = React.createRef("");
+  let fileInput = React.createRef();
   let imageContent;
   let formContent;
-  const [radioValue, setRadioValue] = useState("2");
-  // console.log(radioValue);
+  const fileName = "fName";
+  const defaultFileType = "html";
+  const [radioValue, setRadioValue] = useState("2"); //default 2 column because it seems to be popular
   const radios = [
     { name: "Single Column", value: "1" },
     { name: "Double Column", value: "2" },
@@ -30,6 +30,7 @@ function FileUploader() {
     data: "",
   });
 
+  let DB = new MemoryStorage("repo"); // our alias for localStorage
   /*
    * showFile and show2ColFile remove and replace the style tag
    * found in the uploaded HTML file.
@@ -43,28 +44,17 @@ function FileUploader() {
     reader.fileName = e.name;
     reader.onload = async (fileEvent) => {
       const fName = fileInput.current.files[0].name;
-      localStorage.setItem("fName", fName);
+      DB.setItem("fName", fName);
+      // console.log(DB.getItem('fName'));
       const textSave = fileEvent.target.result;
       htmlData = textSave;
-      //console.log(htmlData);
-      htmlData = textSave.replace(/(<style[\w\W]+style>)/g, singleCol);
+      if (radioValue === "1") {
+        htmlData = textSave.replace(/(<style[\w\W]+style>)/g, singleCol);
+      } else {
+        htmlData = textSave.replace(/(<style[\w\W]+style>)/g, doubleCol);
+      }
       setFile({ data: htmlData });
     };
-    reader.readAsText(e.target.files[0]);
-  };
-
-  const show2ColFile = async (e) => {
-    e.preventDefault();
-    const reader = new FileReader();
-    reader.onload = async (e) => {
-      const fName2 = fileInput2.current.files[0].name;
-      localStorage.setItem("fName2", fName2);
-      const textSave = e.target.result;
-      htmlData = textSave;
-      htmlData = textSave.replace(/(<style[\w\W]+style>)/g, doubleCol);
-      setFile({ data: htmlData });
-    };
-
     reader.readAsText(e.target.files[0]);
   };
 
@@ -79,33 +69,23 @@ function FileUploader() {
     e.preventDefault();
     const blob = new Blob([selectFile.data], { type: "text/html" });
     const fileDownloadUrl = URL.createObjectURL(blob);
-    const userFName = localStorage.getItem("fName");
-    setFile(
-      { fileDownloaderURL: fileDownloadUrl, newFileName: userFName },
-      () => {
-        selectFile.dofileDownload.click();
-        URL.revokeObjectURL(fileDownloadUrl); // free up storage--no longer needed.
-        setFile({ fileDownloadUrl: "" });
-      }
-    );
-  };
-
-  const transform2Col = async (e) => {
-    e.preventDefault();
-    const blob = new Blob([selectFile.data], { type: "text/html" });
-    const fileDownloadUrl = URL.createObjectURL(blob);
-    const userFName = localStorage.getItem("fName2");
-    setFile(
-      {
-        fileDownloaderURL: fileDownloadUrl,
-        newFileName: userFName,
-      },
-      () => {
-        selectFile.dofileDownload.click();
-        URL.revokeObjectURL(fileDownloadUrl); // free up storage--no longer needed.
-        setFile({ fileDownloadUrl: "" });
-      }
-    );
+    let userFName = DB.getItem(fileName);
+    try {
+      setFile(
+        { fileDownloaderURL: fileDownloadUrl, newFileName: userFName },
+        () => {
+          selectFile.dofileDownload.click();
+          URL.revokeObjectURL(fileDownloadUrl); // free up storage--no longer needed.
+          setFile({ fileType: defaultFileType,
+            fileDownloaderURL: null,
+            status: "",
+            newFileName: "",
+            data: "",});
+        }
+      );
+    } catch (e) {
+      console.log(e);
+    }
   };
 
   if (radioValue === "1") {
@@ -160,11 +140,11 @@ function FileUploader() {
       <div className="sheet-type">
         <Form.Group className="mb-3">
           <Form.Control
-            id="file2"
+            id="file"
             type="file"
             size="lg"
-            ref={fileInput2}
-            onChange={show2ColFile}
+            ref={fileInput}
+            onChange={show1ColFile}
             accept=".html"
           />
         </Form.Group>
@@ -179,7 +159,7 @@ function FileUploader() {
             Download it
           </a>
         ) : (
-          <button className="glow-on-hover" onClick={transform2Col}>
+          <button className="glow-on-hover" onClick={transform}>
             Transform
           </button>
         )}

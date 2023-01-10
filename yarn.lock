@@ -8285,6 +8285,11 @@
     "errno" "^0.1.3"
     "readable-stream" "^2.0.1"
 
+"memorystorage@^0.12.0":
+  "integrity" "sha512-8oAVcjcyCCqG2iYSXf7AhyESaHkodE3UUouMS6NhqoY2Bnb1xoPe3sdbf3ExufPGkFYi/HgP7SPer8SFsc6MYg=="
+  "resolved" "https://registry.npmjs.org/memorystorage/-/memorystorage-0.12.0.tgz"
+  "version" "0.12.0"
+
 "merge-descriptors@1.0.1":
   "integrity" "sha512-cCi6g3/Zr1iqQi6ySbseM1Xvooa98N0w31jzUYrXPX2xqObmFGHJ0tQ5u74H3mVh7wLouTseZyYIq39g8cNp1w=="
   "resolved" "https://registry.npmjs.org/merge-descriptors/-/merge-descriptors-1.0.1.tgz"
