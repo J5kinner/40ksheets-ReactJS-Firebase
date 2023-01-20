@@ -3,16 +3,16 @@ import "./assets/css/App.css";
 import "./assets/css/style.css";
 import FileUploader from "./components/FileUploader";
 import CookieConsent from "react-cookie-consent";
-import ReactGA from 'react-ga';
+// import ReactGA from 'react-ga';
 
-const TRACKING_ID = "G-RJL9QBHMKL";
-ReactGA.initialize(TRACKING_ID, {
-  debug: false,
-  titleCase: false,
-  gaOptions: {
-    siteSpeedSampleRate: 100
-  }
-});
+// const TRACKING_ID = "G-RJL9QBHMKL";
+// ReactGA.initialize(TRACKING_ID, {
+//   debug: false,
+//   titleCase: false,
+//   gaOptions: {
+//     siteSpeedSampleRate: 100
+//   }
+// });
 
 function App() {
   return (
