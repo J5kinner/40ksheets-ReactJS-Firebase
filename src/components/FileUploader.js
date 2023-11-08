@@ -8,6 +8,7 @@ import singleCol from "../assets/sheetStyle/singleCol.js";
 import doubleCol from "../assets/sheetStyle/doubleCol.js";
 import Form from "react-bootstrap/Form";
 import MemoryStorage from "memorystorage";
+import HtmlToPdfConverter from "./HtmlToPdfConverter";
 
 function FileUploader() {
   let htmlData;
@@ -29,6 +30,8 @@ function FileUploader() {
     newFileName: "",
     data: "",
   });
+
+  const [htmlBlob, setHtmlBlob] = useState(null);
 
   let DB = new MemoryStorage("repo"); // our alias for localStorage
   /*
@@ -76,17 +79,24 @@ function FileUploader() {
         () => {
           selectFile.dofileDownload.click();
           URL.revokeObjectURL(fileDownloadUrl); // free up storage--no longer needed.
-          setFile({ fileType: defaultFileType,
+          setFile({
+            fileType: defaultFileType,
             fileDownloaderURL: null,
             status: "",
             newFileName: "",
-            data: "",});
+            data: "",
+          });
         }
       );
     } catch (e) {
       console.log(e);
     }
   };
+
+    const transformToPDF = async (e) => {
+      const file = e.target.files[0];
+      setHtmlBlob(new Blob([selectFile.data], { type: 'text/html' }));
+    };
 
   if (radioValue === "1") {
     imageContent = (
@@ -159,10 +169,14 @@ function FileUploader() {
             Download it
           </a>
         ) : (
-          <button className="glow-on-hover" onClick={transform}>
-            Transform
-          </button>
+          <div>
+            <button className="glow-on-hover" onClick={transform}>
+              Transform
+            </button>
+          </div>
         )}
+        <input type="file" accept=".html" onChange={transformToPDF} />
+      {htmlBlob && <HtmlToPdfConverter htmlBlob={htmlBlob} />}
       </div>
     );
   }
