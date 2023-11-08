@@ -95,7 +95,7 @@ function FileUploader() {
 
     const transformToPDF = async (e) => {
       const file = e.target.files[0];
-      setHtmlBlob(new Blob([selectFile.data], { type: 'text/html' }));
+      setHtmlBlob(new Blob([file], { type: 'text/html' }));
     };
 
   if (radioValue === "1") {
