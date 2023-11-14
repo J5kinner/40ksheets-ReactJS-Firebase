@@ -284,6 +284,9 @@ p {
     max-width: 692px;
     max-height: 900px;
   }
+  .download {
+    font-size: 0.8em;
+  }
 }
 @media screen and (min-width: 2000px) {
   .upload-container {
@@ -294,4 +297,6 @@ p {
     max-width: auto;
     max-height: auto;
   }
+
+  
 }
