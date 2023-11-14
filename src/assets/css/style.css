@@ -119,6 +119,11 @@ p {
   border-radius: 10px;
 }
 
+.download:disabled {
+  color:grey;
+  background: darkgrey
+}
+
 .download:active {
   color: #000;
 }

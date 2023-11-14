@@ -7,84 +7,93 @@ import SheetStyleSelectorButtons from "./SheetStyleSelectorButtons";
 import singleCol from "../assets/sheetStyle/singleCol.js";
 import doubleCol from "../assets/sheetStyle/doubleCol.js";
 import Form from "react-bootstrap/Form";
-import MemoryStorage from "memorystorage";
+import html2pdf from "html2pdf.js";
 
 function FileUploader() {
-  let htmlData;
-  let fileInput = React.createRef();
+  const [file, setFile] = useState({ data: "", name: "" });
+  const fileInputRef = React.createRef();
   let imageContent;
   let formContent;
-  const fileName = "fName";
-  const defaultFileType = "html";
   const [radioValue, setRadioValue] = useState("2"); //default 2 column because it seems to be popular
   const radios = [
     { name: "Single Column", value: "1" },
     { name: "Double Column", value: "2" },
   ];
 
-  const [selectFile, setFile] = useState({
-    fileType: defaultFileType,
-    fileDownloaderURL: null,
-    status: "",
-    newFileName: "",
-    data: "",
-  });
-
-  let DB = new MemoryStorage("repo"); // our alias for localStorage
-  /*
-   * showFile and show2ColFile remove and replace the style tag
-   * found in the uploaded HTML file.
-   *
-   * @Return The replaced style is the the corresponding code for either 1 column or 2
-   */
-
-  const show1ColFile = async (e) => {
+  const handleFileChange = async (e) => {
     e.preventDefault();
-    const reader = new FileReader();
-    reader.fileName = e.name;
-    reader.onload = async (fileEvent) => {
-      const fName = fileInput.current.files[0].name;
-      DB.setItem("fName", fName);
-      // console.log(DB.getItem('fName'));
-      const textSave = fileEvent.target.result;
-      htmlData = textSave;
-      if (radioValue === "1") {
-        htmlData = textSave.replace(/(<style[\w\W]+style>)/g, singleCol);
-      } else {
-        htmlData = textSave.replace(/(<style[\w\W]+style>)/g, doubleCol);
-      }
-      setFile({ data: htmlData });
+
+    const loadFile = (file) => {
+      return new Promise((resolve) => {
+        const reader = new FileReader();
+
+        reader.onload = (fileEvent) => {
+          const fName = file.name;
+          const textSave = fileEvent.target.result;
+          let htmlData = textSave;
+
+          if (radioValue === "1") {
+            htmlData = textSave.replace(/(<style[\w\W]+style>)/g, singleCol);
+          } else {
+            htmlData = textSave.replace(/(<style[\w\W]+style>)/g, doubleCol);
+          }
+
+          resolve({ data: htmlData, name: fName });
+        };
+
+        reader.readAsText(file);
+      });
     };
-    reader.readAsText(e.target.files[0]);
+
+    const selectedFile = e.target.files[0];
+
+    try {
+      const fileData = await loadFile(selectedFile);
+      setFile(fileData);
+    } catch (error) {
+      console.error("Error reading file:", error);
+    }
+  };
+  const resetFileInputNState = () => {
+    if (fileInputRef.current) {
+      fileInputRef.current.value = "";
+    }
+    setFile({ data: "", name: "" });
   };
 
-  /*
-   * The transform and transform2Col take the htmlData stored in selectFile state
-   * and creates a blob for the new HTML file we are going to return to the user.
-   *
-   * @return blob containing the new HTML file which looks prettier.
-   */
 
-  const transform = async (e) => {
-    e.preventDefault();
-    const blob = new Blob([selectFile.data], { type: "text/html" });
-    const fileDownloadUrl = URL.createObjectURL(blob);
-    let userFName = DB.getItem(fileName);
-    try {
-      setFile(
-        { fileDownloaderURL: fileDownloadUrl, newFileName: userFName },
-        () => {
-          selectFile.dofileDownload.click();
-          URL.revokeObjectURL(fileDownloadUrl); // free up storage--no longer needed.
-          setFile({ fileType: defaultFileType,
-            fileDownloaderURL: null,
-            status: "",
-            newFileName: "",
-            data: "",});
-        }
+  // Currently works and downloads PDFs but not correctly
+  const downloadPDF = async () => {
+    const { data, name } = file;
+
+    if (data) {
+      const tempDiv = document.querySelector(".h3");
+      // tempDiv.innerHTML = data;
+
+      // Convert the HTML content to PDF using html2pdf
+      const pdfBlob = await html2pdf(data).from(tempDiv).outputPdf()
+
+      // Create a download link for the PDF
+      const pdfBlobUrl = URL.createObjectURL(
+        new Blob([pdfBlob], { type: "application/pdf" })
       );
-    } catch (e) {
-      console.log(e);
+      const pdfLink = document.createElement("a");
+      pdfLink.href = pdfBlobUrl;
+      pdfLink.download = `${name.replace(".html", "")}_modified.pdf`;
+      pdfLink.click();
+    }
+  };
+
+  const downloadHTML = () => {
+    const { data, name } = file;
+
+    if (data) {
+      const htmlBlob = new Blob([data], { type: "text/html" });
+      const htmlBlobUrl = URL.createObjectURL(htmlBlob);
+      const htmlLink = document.createElement("a");
+      htmlLink.href = htmlBlobUrl;
+      htmlLink.download = `${name.replace(".html", "")}_modified.html`;
+      htmlLink.click();
     }
   };
 
@@ -94,78 +103,27 @@ function FileUploader() {
         <Preview title="Single Column" image={singleColumnImg} />
       </div>
     );
-    formContent = (
-      <div className="sheet-type">
-        <Form.Group className="mb-3">
-          <Form.Control
-            id="file"
-            type="file"
-            size="lg"
-            ref={fileInput}
-            onChange={show1ColFile}
-            accept=".html"
-          />
-        </Form.Group>
-        {/* <Form.Label htmlFor="colorInput">Color picker</Form.Label>
-        <Form.Control
-          type="color"
-          id="colorInput"
-          defaultValue="#563d7c"
-          title="Choose your color"
-        /> */}
-
-        {selectFile.newFileName ? (
-          <a
-            className="download"
-            download={selectFile.newFileName}
-            href={selectFile.fileDownloaderURL}
-            ref={selectFile}
-          >
-            Download it
-          </a>
-        ) : (
-          <button className="glow-on-hover" onClick={transform}>
-            Transform
-          </button>
-        )}
-      </div>
-    );
   } else {
     imageContent = (
       <div className="upload-type">
         <Preview title="Double Column" image={doubleColumnImg} />
       </div>
     );
-    formContent = (
-      <div className="sheet-type">
-        <Form.Group className="mb-3">
-          <Form.Control
-            id="file"
-            type="file"
-            size="lg"
-            ref={fileInput}
-            onChange={show1ColFile}
-            accept=".html"
-          />
-        </Form.Group>
-
-        {selectFile.newFileName ? (
-          <a
-            className="download"
-            download={selectFile.newFileName}
-            href={selectFile.fileDownloaderURL}
-            ref={selectFile}
-          >
-            Download it
-          </a>
-        ) : (
-          <button className="glow-on-hover" onClick={transform}>
-            Transform
-          </button>
-        )}
-      </div>
-    );
   }
+  formContent = (
+    <div className="sheet-type">
+      <Form.Group className="mb-3">
+        <Form.Control
+          id="file"
+          type="file"
+          size="lg"
+          ref={fileInputRef}
+          onChange={handleFileChange}
+          accept=".html"
+        />
+      </Form.Group>
+    </div>
+  );
 
   /*
    * So the user will need to press the conversion button twice to activate either of the
@@ -182,9 +140,28 @@ function FileUploader() {
         <SheetStyleSelectorButtons
           radioValue={radioValue}
           radios={radios}
-          onChange={(e) => setRadioValue(e.currentTarget.value)}
+          onChange={(e) => {
+            setRadioValue(e.currentTarget.value);
+            resetFileInputNState();
+          }}
         />
         {formContent}
+        <div>
+          <button
+            className="download"
+            onClick={downloadPDF}
+            disabled={true} //disabled until it starts working
+          >
+            PDF Incoming
+          </button>
+          <button
+            className="download"
+            onClick={downloadHTML}
+            disabled={!file.data}
+          >
+            Download HTML
+          </button>
+        </div>
       </div>
       <br />
     </div>
